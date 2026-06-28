@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>올림포스 파크케어 — 저렴한 월 주차에, 세차까지 공짜?</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --blue:#0064B2; --blue-700:#004f8e; --blue-800:#003e70; --blue-50:#eaf3fb; --blue-100:#d8e9f8;
+    --amber:#E8A33D; --amber-600:#d4901f; --amber-50:#fdf4e4;
+    --ink:#191f28; --g900:#191f28; --g700:#4e5968; --g600:#6b7684; --g500:#8b95a1; --g300:#d1d6db; --g200:#e5e8eb; --g100:#f2f4f6; --g50:#f9fafb;
+    --bg:#ffffff; --ok:#16a36a;
+    --r-card:22px; --r-btn:14px; --r-pill:999px;
+    --sh-sm:0 1px 3px rgba(25,31,40,.05), 0 1px 2px rgba(25,31,40,.04);
+    --sh:0 4px 14px rgba(25,31,40,.06), 0 2px 6px rgba(25,31,40,.04);
+    --sh-lg:0 18px 50px rgba(0,75,134,.14), 0 6px 18px rgba(25,31,40,.06);
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Pretendard","Malgun Gothic","맑은 고딕",-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;letter-spacing:-.02em;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;letter-spacing:-.02em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  img{max-width:100%;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:54px;padding:0 26px;border-radius:var(--r-btn);font-weight:700;font-size:16px;transition:.16s ease;white-space:nowrap;}
+  .btn-primary{background:var(--blue);color:#fff;} .btn-primary:hover{background:var(--blue-700);transform:translateY(-1px);box-shadow:var(--sh);}
+  .btn-ghost{background:var(--g100);color:var(--g900);} .btn-ghost:hover{background:var(--g200);}
+  .btn-amber{background:var(--amber);color:#3a2a07;} .btn-amber:hover{background:var(--amber-600);}
+  .btn-line{background:#fff;border:1.5px solid var(--g200);color:var(--g900);} .btn-line:hover{border-color:var(--blue);color:var(--blue);}
+  .btn-block{width:100%;} .btn-sm{height:44px;font-size:14.5px;padding:0 18px;} .btn-lg{height:58px;font-size:17px;padding:0 32px;}
+  .btn:disabled{opacity:.45;cursor:not-allowed;}
+
+  header.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--g100);}
+  .nav .row{display:flex;align-items:center;gap:24px;height:64px;}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:19px;letter-spacing:-.04em;flex:none;white-space:nowrap;}
+  .logo .mk{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--blue-800));display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:900;}
+  .logo b{color:var(--blue);} .logo span{color:var(--g500);font-weight:700;font-size:13px;margin-left:2px;}
+  .nav nav{display:flex;gap:2px;margin-left:6px;}
+  .nav nav a{padding:9px 12px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--g700);white-space:nowrap;}
+  .nav nav a:hover{background:var(--g50);color:var(--g900);}
+  .nav .right{margin-left:auto;display:flex;gap:10px;align-items:center;}
+  .navtoggle{display:none;width:42px;height:42px;border-radius:10px;align-items:center;justify-content:center;color:var(--g700);}
+  .navtoggle:hover{background:var(--g50);}
+  @media(max-width:1040px){ .nav nav{display:none;} .nav .right .btn-ghost{display:none;} .navtoggle{display:inline-flex;}
+    .nav.open nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--g100);padding:8px 16px;gap:2px;box-shadow:var(--sh);}
+    .nav.open nav a{padding:14px 12px;font-size:16px;} }
+
+  .view{display:none;} .view.on{display:block;animation:fade .35s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .hero{position:relative;overflow:hidden;background:radial-gradient(900px 460px at 88% -8%, var(--blue-50), transparent 70%),radial-gradient(620px 360px at 6% 110%, var(--amber-50), transparent 70%);}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:72px 24px 80px;}
+  @media(max-width:900px){ .hero .wrap{grid-template-columns:1fr;gap:34px;padding:52px 24px 60px;} }
+  .pill{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 15px;border-radius:var(--r-pill);background:#fff;border:1px solid var(--g200);font-size:13px;font-weight:700;color:var(--blue);box-shadow:var(--sh-sm);}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(22,163,106,.16);}
+  h1.hero-t{font-size:clamp(34px,5vw,56px);line-height:1.12;font-weight:800;letter-spacing:-.045em;margin:20px 0 0;}
+  h1.hero-t .hl{color:var(--blue);} h1.hero-t .am{position:relative;white-space:nowrap;}
+  h1.hero-t .am::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;height:15px;background:var(--amber);opacity:.34;border-radius:4px;z-index:-1;}
+  .hero-sub{font-size:18px;color:var(--g700);margin:20px 0 0;max-width:31em;font-weight:500;}
+  .hero-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+  .hero-stats{display:flex;gap:24px;margin-top:30px;flex-wrap:wrap;}
+  .hero-stats .s .n{font-size:23px;font-weight:800;color:var(--g900);letter-spacing:-.03em;}
+  .hero-stats .s .n .u{font-size:14px;color:var(--g500);font-weight:700;}
+  .hero-stats .s .l{font-size:12.5px;color:var(--g600);font-weight:600;margin-top:2px;}
+  .hero-stats .div{width:1px;background:var(--g200);}
+  .heroviz{position:relative;display:flex;justify-content:center;}
+  .memcard{width:330px;border-radius:24px;padding:26px;color:#fff;position:relative;overflow:hidden;background:linear-gradient(150deg,var(--blue) 0%, var(--blue-800) 100%);box-shadow:var(--sh-lg);transform:rotate(-3deg);}
+  .memcard::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-90px;top:-90px;background:rgba(255,255,255,.08);}
+  .memcard .brand{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;color:#cfe3f5;}
+  .memcard .plan{font-size:27px;font-weight:800;margin-top:38px;letter-spacing:-.03em;}
+  .memcard .ctr{font-size:13.5px;color:#cfe3f5;margin-top:4px;font-weight:600;}
+  .memcard .pr{display:flex;align-items:baseline;gap:6px;margin-top:22px;}
+  .memcard .pr b{font-size:30px;font-weight:800;letter-spacing:-.03em;} .memcard .pr span{font-size:14px;color:#cfe3f5;}
+  .freebadge{position:absolute;right:-14px;top:140px;background:var(--amber);color:#3a2a07;font-weight:800;font-size:15px;padding:11px 16px;border-radius:14px;transform:rotate(7deg);box-shadow:var(--sh);z-index:3;}
+  .freebadge small{display:block;font-size:11px;font-weight:700;opacity:.8;}
+  .vizchip{position:absolute;background:#fff;border-radius:14px;box-shadow:var(--sh);padding:11px 14px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:9px;}
+  .vizchip .ic{width:30px;height:30px;border-radius:9px;background:var(--blue-50);color:var(--blue);display:flex;align-items:center;justify-content:center;}
+  .vizchip.a{left:-6px;top:8px;} .vizchip.b{right:6px;bottom:-2px;}
+  @media(max-width:900px){ .vizchip.a{left:2px;} }
+
+  section.sec{padding:80px 0;} section.alt{background:var(--g50);}
+  .eyebrow{font-size:13.5px;font-weight:800;color:var(--blue);letter-spacing:.02em;text-transform:uppercase;}
+  h2.sec-t{font-size:clamp(27px,3.6vw,36px);font-weight:800;letter-spacing:-.04em;margin:10px 0 0;line-height:1.22;}
+  .sec-d{font-size:17px;color:var(--g600);margin:14px 0 0;font-weight:500;max-width:42em;}
+  .sec-head.center{margin:0 auto;text-align:center;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;}
+  @media(max-width:820px){ .steps{grid-template-columns:1fr;} }
+  .step{background:#fff;border:1px solid var(--g200);border-radius:var(--r-card);padding:28px;box-shadow:var(--sh-sm);}
+  .step .no{font-size:13px;font-weight:800;color:var(--blue);background:var(--blue-50);width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;}
+  .step .ic{margin-top:18px;width:48px;height:48px;border-radius:13px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .step h3{font-size:18.5px;font-weight:800;margin-top:18px;letter-spacing:-.03em;}
+  .step p{color:var(--g600);font-size:14.5px;margin-top:8px;font-weight:500;}
+  .step .tag{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--amber-600);background:var(--amber-50);padding:4px 9px;border-radius:7px;}
+  .wash-note{margin-top:18px;background:var(--blue-50);border:1px solid var(--blue-100);border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .wash-note .t{font-weight:800;font-size:16px;color:var(--blue-800);}
+  .wash-note .d{font-size:14px;color:var(--g700);font-weight:500;margin-top:3px;}
+  .wash-note .sp{margin-left:auto;display:flex;gap:8px;}
+  @media(max-width:760px){ .wash-note .sp{margin-left:0;width:100%;} .wash-note .sp .btn{flex:1;} }
+
+  .compare{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;margin-top:24px;background:#fff;border:1px solid var(--g200);border-radius:var(--r-card);padding:26px 30px;box-shadow:var(--sh-sm);}
+  @media(max-width:760px){ .compare{grid-template-columns:1fr;text-align:center;} .compare .vs{transform:rotate(90deg);} }
+  .compare .side .k{font-size:13.5px;font-weight:700;color:var(--g500);}
+  .compare .side .v{font-size:26px;font-weight:800;letter-spacing:-.03em;margin-top:4px;}
+  .compare .side.bad .v{color:var(--g500);text-decoration:line-through;text-decoration-color:var(--g300);}
+  .compare .side.good .v{color:var(--blue);}
+  .compare .side .n{font-size:13px;color:var(--g600);margin-top:3px;font-weight:500;}
+  .compare .vs{width:46px;height:46px;border-radius:50%;background:var(--g100);color:var(--g500);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;}
+
+  .ctr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+  @media(max-width:900px){ .ctr-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .ctr-grid{grid-template-columns:1fr;} }
+  .ctr-card{background:#fff;border:1px solid var(--g200);border-radius:18px;padding:20px 22px;box-shadow:var(--sh-sm);transition:.16s;cursor:pointer;}
+  .ctr-card:hover{box-shadow:var(--sh);transform:translateY(-2px);border-color:var(--blue-100);}
+  .ctr-card .top{display:flex;align-items:center;justify-content:space-between;}
+  .ctr-card .area{font-size:12.5px;font-weight:700;color:var(--blue);background:var(--blue-50);padding:4px 10px;border-radius:7px;}
+  .ctr-card .live{font-size:12px;font-weight:700;color:var(--ok);display:flex;align-items:center;gap:6px;}
+  .ctr-card .live .d{width:7px;height:7px;border-radius:50%;background:var(--ok);}
+  .ctr-card h4{font-size:18px;font-weight:800;margin-top:14px;letter-spacing:-.03em;}
+  .ctr-card p{font-size:13.5px;color:var(--g600);margin-top:5px;font-weight:500;}
+  .ctr-note{margin-top:24px;font-size:13.5px;color:var(--g500);text-align:center;}
+
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px;align-items:stretch;}
+  @media(max-width:980px){ .price-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .price-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;} }
+  .pcard{background:#fff;border:1px solid var(--g200);border-radius:var(--r-card);padding:26px 22px;display:flex;flex-direction:column;box-shadow:var(--sh-sm);position:relative;}
+  .pcard.feat{border:2px solid var(--blue);box-shadow:var(--sh-lg);}
+  .pcard .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:12px;font-weight:800;padding:6px 14px;border-radius:var(--r-pill);white-space:nowrap;}
+  .pcard .pname{font-size:19px;font-weight:800;letter-spacing:-.03em;}
+  .pcard .ptag{font-size:12.5px;color:var(--g600);font-weight:600;margin-top:4px;min-height:34px;}
+  .pcard .pprice{margin-top:14px;display:flex;align-items:baseline;gap:4px;flex-wrap:wrap;}
+  .pcard .pprice b{font-size:26px;font-weight:800;letter-spacing:-.04em;} .pcard .pprice span{font-size:13.5px;color:var(--g500);font-weight:600;}
+  .pcard .pbase{margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--blue);background:var(--blue-50);padding:5px 10px;border-radius:8px;align-self:flex-start;}
+  .pcard .pbase.gray{color:var(--g600);background:var(--g100);}
+  .pcard ul{list-style:none;margin:18px 0 0;display:flex;flex-direction:column;gap:10px;}
+  .pcard li{display:flex;gap:9px;font-size:13.8px;color:var(--g700);font-weight:500;line-height:1.45;}
+  .pcard li svg{flex:none;margin-top:2px;color:var(--blue);}
+  .pcard .pacts{margin-top:auto;padding-top:20px;display:flex;flex-direction:column;gap:8px;}
+
+  .finder-band{margin-top:46px;background:linear-gradient(135deg,#0a73c9,var(--blue-800));border-radius:24px;padding:34px 36px;color:#fff;display:flex;align-items:center;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden;}
+  .finder-band::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.07);right:-80px;top:-100px;}
+  .finder-band .t{font-size:21px;font-weight:800;letter-spacing:-.03em;position:relative;}
+  .finder-band .d{font-size:14.5px;color:#cfe3f5;margin-top:5px;font-weight:500;position:relative;}
+  .finder-band .sp{margin-left:auto;position:relative;}
+  @media(max-width:680px){ .finder-band .sp{margin-left:0;width:100%;} .finder-band .sp .btn{width:100%;} }
+
+  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px;}
+  @media(max-width:980px){ .feat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .feat-grid{grid-template-columns:1fr;} }
+  .feat{background:#fff;border:1px solid var(--g200);border-radius:18px;padding:24px;box-shadow:var(--sh-sm);}
+  .feat .ic{width:44px;height:44px;border-radius:13px;background:var(--amber-50);color:var(--amber-600);display:flex;align-items:center;justify-content:center;font-size:21px;}
+  .feat.kk .ic{background:#fff7c2;color:#3c1e1e;}
+  .feat h4{font-size:16.5px;font-weight:800;margin-top:15px;letter-spacing:-.03em;}
+  .feat p{font-size:14px;color:var(--g600);margin-top:8px;font-weight:500;}
+  .faq{max-width:760px;margin:42px auto 0;}
+  .qa{border-bottom:1px solid var(--g200);}
+  .qa summary{list-style:none;cursor:pointer;padding:20px 4px;font-size:17px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .qa summary::-webkit-details-marker{display:none;}
+  .qa summary .chev{flex:none;color:var(--g500);transition:.2s;}
+  .qa[open] summary .chev{transform:rotate(180deg);color:var(--blue);}
+  .qa .a{padding:0 4px 20px;color:var(--g600);font-size:15px;font-weight:500;line-height:1.7;}
+
+  .ctaband{background:linear-gradient(135deg,var(--blue) 0%, var(--blue-800) 100%);border-radius:28px;padding:54px 40px;color:#fff;text-align:center;position:relative;overflow:hidden;}
+  .ctaband::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.07);right:-100px;bottom:-140px;}
+  .ctaband h2{font-size:clamp(26px,3.4vw,34px);font-weight:800;letter-spacing:-.04em;position:relative;}
+  .ctaband p{color:#cfe3f5;font-size:17px;margin-top:12px;position:relative;font-weight:500;}
+  .ctaband .acts{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;}
+
+  footer{background:var(--g50);border-top:1px solid var(--g100);padding:48px 0 56px;}
+  footer .cols{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+  footer .logo{margin-bottom:14px;}
+  footer .desc{font-size:13.5px;color:var(--g600);max-width:34em;line-height:1.7;font-weight:500;}
+  footer .legal{margin-top:22px;font-size:12px;color:var(--g500);line-height:1.7;}
+  footer .lk{display:flex;gap:30px;flex-wrap:wrap;}
+  footer .lk .c h5{font-size:13px;font-weight:800;color:var(--g700);margin-bottom:10px;}
+  footer .lk .c a{display:block;font-size:13.5px;color:var(--g600);padding:4px 0;font-weight:500;}
+  footer .lk .c a:hover{color:var(--blue);}
+
+  .subhead{background:var(--g50);border-bottom:1px solid var(--g100);}
+  .subhead .wrap{padding:30px 24px;}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--g600);} .back:hover{color:var(--blue);}
+  .pagepad{padding:46px 0 80px;}
+  .pd-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:36px;align-items:start;}
+  @media(max-width:860px){ .pd-grid{grid-template-columns:1fr;} }
+  .pd-main h1{font-size:34px;font-weight:800;letter-spacing:-.04em;}
+  .pd-main .lead{font-size:18px;color:var(--g600);margin-top:12px;font-weight:500;}
+  .pd-block{margin-top:34px;}
+  .pd-block h3{font-size:19px;font-weight:800;letter-spacing:-.03em;margin-bottom:16px;}
+  .pd-inc{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:560px){ .pd-inc{grid-template-columns:1fr;} }
+  .pd-inc .i{display:flex;gap:11px;background:#fff;border:1px solid var(--g200);border-radius:14px;padding:15px 17px;}
+  .pd-inc .i .e{font-size:20px;} .pd-inc .i b{font-weight:700;font-size:15px;} .pd-inc .i p{font-size:13px;color:var(--g600);margin-top:2px;font-weight:500;}
+  .pd-flow{background:var(--blue-50);border:1px solid var(--blue-100);border-radius:16px;padding:18px 20px;margin-top:20px;font-size:14px;color:var(--g700);font-weight:500;line-height:1.7;}
+  .pd-flow b{color:var(--blue-800);}
+  .pd-side{position:sticky;top:88px;background:#fff;border:1px solid var(--g200);border-radius:var(--r-card);padding:26px;box-shadow:var(--sh);}
+  .pd-side .pn{font-size:14px;font-weight:700;color:var(--blue);}
+  .pd-side .pp{display:flex;align-items:baseline;gap:5px;margin-top:8px;flex-wrap:wrap;}
+  .pd-side .pp b{font-size:28px;font-weight:800;letter-spacing:-.04em;} .pd-side .pp span{color:var(--g500);font-size:14px;}
+  .pd-side .promo{margin-top:10px;font-size:13.5px;color:var(--amber-600);font-weight:700;background:var(--amber-50);padding:8px 12px;border-radius:10px;}
+  .pd-side .acts{margin-top:18px;display:flex;flex-direction:column;gap:9px;}
+
+  .co-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:34px;align-items:start;}
+  @media(max-width:880px){ .co-grid{grid-template-columns:1fr;} }
+  .co-step{background:#fff;border:1px solid var(--g200);border-radius:var(--r-card);padding:26px 28px;box-shadow:var(--sh-sm);margin-bottom:18px;}
+  .co-step .st{display:flex;align-items:center;gap:11px;margin-bottom:18px;}
+  .co-step .st .no{width:28px;height:28px;border-radius:9px;background:var(--blue);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .co-step .st h3{font-size:18px;font-weight:800;letter-spacing:-.03em;}
+  .opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media(max-width:560px){ .opt-grid{grid-template-columns:1fr;} }
+  .opt{border:1.5px solid var(--g200);border-radius:14px;padding:14px 16px;cursor:pointer;transition:.14s;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;}
+  .opt:hover{border-color:var(--blue-100);} .opt.sel{border-color:var(--blue);background:var(--blue-50);}
+  .opt .nm{font-weight:700;font-size:15px;} .opt .sub{font-size:12.5px;color:var(--g600);font-weight:500;margin-top:2px;}
+  .opt .rd{width:20px;height:20px;border-radius:50%;border:2px solid var(--g300);flex:none;}
+  .opt.sel .rd{border-color:var(--blue);background:radial-gradient(circle at center, var(--blue) 0 5px, #fff 6px);}
+  .field{margin-top:14px;} .field label{font-size:13.5px;font-weight:700;color:var(--g700);display:block;margin-bottom:7px;}
+  .field input,.field select,.field textarea{width:100%;height:50px;border:1.5px solid var(--g200);border-radius:12px;padding:0 15px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;transition:.14s;}
+  .field textarea{height:auto;padding:13px 15px;min-height:96px;resize:vertical;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-50);}
+  .field.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:480px){ .field.row{grid-template-columns:1fr;} }
+  .slot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px;}
+  .slot{border:1.5px solid var(--g200);border-radius:11px;padding:11px 0;text-align:center;font-weight:700;font-size:14px;color:var(--g700);cursor:pointer;background:#fff;transition:.14s;}
+  .slot:hover{border-color:var(--blue-100);} .slot.sel{border-color:var(--blue);background:var(--blue-50);color:var(--blue);}
+  .pay-tabs{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+  .pay-tab{flex:1;min-width:96px;border:1.5px solid var(--g200);border-radius:12px;padding:12px;font-weight:700;font-size:14px;text-align:center;color:var(--g600);background:#fff;transition:.14s;}
+  .pay-tab.sel{border-color:var(--blue);color:var(--blue);background:var(--blue-50);}
+  .chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--g700);margin-top:14px;font-weight:500;cursor:pointer;}
+  .chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue);flex:none;}
+  .demo-note{font-size:12.5px;color:var(--g500);background:var(--g50);border:1px dashed var(--g300);border-radius:10px;padding:11px 14px;margin-top:14px;font-weight:500;}
+  .info-note{font-size:13px;color:var(--blue-800);background:var(--blue-50);border:1px solid var(--blue-100);border-radius:12px;padding:13px 16px;margin-top:14px;font-weight:600;line-height:1.6;}
+  .info-note.kk{color:#5b4636;background:#fffbe0;border-color:#f4e6a1;}
+  .co-side{position:sticky;top:88px;background:#fff;border:1px solid var(--g200);border-radius:var(--r-card);padding:26px;box-shadow:var(--sh);}
+  .co-side h3{font-size:17px;font-weight:800;margin-bottom:16px;}
+  .sline{display:flex;justify-content:space-between;font-size:14.5px;padding:9px 0;color:var(--g700);font-weight:500;gap:10px;}
+  .sline .v{font-weight:700;color:var(--g900);text-align:right;}
+  .sline.muted .v{color:var(--g500);font-weight:600;}
+  .sdiv{height:1px;background:var(--g100);margin:8px 0;}
+  .stotal{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;}
+  .stotal .l{font-size:15px;font-weight:700;} .stotal .v{font-size:26px;font-weight:800;color:var(--blue);letter-spacing:-.03em;}
+  .after{font-size:12.5px;color:var(--g500);text-align:right;margin-top:4px;font-weight:500;}
+
+  .finder-q{margin-bottom:20px;} .finder-q .ql{font-weight:800;font-size:17.5px;margin-bottom:13px;letter-spacing:-.03em;}
+  .rec-head{display:flex;align-items:center;gap:10px;color:var(--blue);font-weight:800;font-size:14px;}
+  .rec-name{font-size:30px;font-weight:800;letter-spacing:-.04em;margin-top:8px;}
+  .rec-why{font-size:15.5px;color:var(--g600);margin-top:10px;font-weight:500;line-height:1.7;}
+  .rec-price{font-size:20px;font-weight:800;margin-top:16px;color:var(--g900);}
+
+  .ok-wrap{max-width:560px;margin:0 auto;text-align:center;background:#fff;border:1px solid var(--g200);border-radius:26px;padding:48px 36px;box-shadow:var(--sh);}
+  .ok-ic{width:74px;height:74px;border-radius:50%;background:var(--blue-50);color:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+  .ok-wrap h1{font-size:27px;font-weight:800;margin-top:22px;letter-spacing:-.03em;}
+  .ok-wrap p{color:var(--g600);margin-top:10px;font-size:15.5px;font-weight:500;}
+  .ok-card{background:var(--g50);border-radius:16px;padding:20px;margin-top:26px;text-align:left;}
+  .ok-card .sline{padding:7px 0;}
+  .ok-kk{display:flex;align-items:center;gap:10px;justify-content:center;background:#fffbe0;border:1px solid #f4e6a1;border-radius:12px;padding:12px;margin-top:18px;font-size:13.5px;font-weight:700;color:#5b4636;}
+  .badge-proto{position:fixed;left:14px;bottom:14px;z-index:200;background:var(--ink);color:#fff;font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:var(--r-pill);opacity:.78;box-shadow:var(--sh);}
+  @media print{.badge-proto{display:none;}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap row">
+    <a href="#home" class="logo"><span class="mk">O</span> 올림포스 <b>파크케어</b><span>PARKCARE</span></a>
+    <nav onclick="document.querySelector('header.nav').classList.remove('open')">
+      <a href="#home">서비스 소개</a>
+      <a href="#zones">케어존 찾기</a>
+      <a href="#pricing">요금제</a>
+      <a href="#reserve">워시케어 예약</a>
+      <a href="#finder">패키지 찾기</a>
+      <a href="#faq">자주 묻는 질문</a>
+    </nav>
+    <div class="right">
+      <button class="btn btn-ghost btn-sm" onclick="go('#consult')">상담 신청</button>
+      <button class="btn btn-primary btn-sm" onclick="startSub('parkwash')">구독 시작</button>
+      <button class="navtoggle" onclick="toggleNav()" aria-label="메뉴" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HOME ================= -->
+<div class="view on" id="view-home">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-left">
+        <span class="pill"><span class="dot"></span>수도권 9개 케어존 운영중 · 워시케어 09:00–18:00</span>
+        <h1 class="hero-t">저렴한 월 주차에,<br><span class="am"><span class="hl">세차까지 공짜?</span></span></h1>
+        <p class="hero-sub">차를 올림포스 케어존에 두고, 들를 때마다 실내·외 세차. 출장 없이 케어존에서 30분, 출장세차의 <b>1/3 가격</b>으로 — 이미 내는 주차비에 세차가 딸려옵니다.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" onclick="startSub('parkwash')">구독 시작하기</button>
+          <button class="btn btn-line btn-lg" onclick="go('#finder')">내게 맞는 패키지 찾기</button>
+        </div>
+        <div class="hero-stats">
+          <div class="s"><div class="n">5,000<span class="u">원~ / 회</span></div><div class="l">워시 1회 가격 (월 2회 9,900원)</div></div>
+          <div class="div"></div>
+          <div class="s"><div class="n">30<span class="u">분</span></div><div class="l">입차→세차→출차</div></div>
+          <div class="div"></div>
+          <div class="s"><div class="n">9<span class="u">곳</span></div><div class="l">수도권 운영 케어존</div></div>
+        </div>
+      </div>
+      <div class="heroviz">
+        <div class="memcard">
+          <div class="brand"><span>OLYMPOS PARKCARE</span><span>MEMBER</span></div>
+          <div class="plan">파크 &amp; 워시</div>
+          <div class="ctr">송파 헬리오시티 케어존 · 상시주차 + 세차</div>
+          <div class="pr"><b>월 149,000원</b><span>/ 세차 월 4회 포함</span></div>
+        </div>
+        <div class="freebadge">세차 0원<small>주차비에 포함</small></div>
+        <div class="vizchip a"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M9.5 16.5V7.5h3.3a2.5 2.5 0 0 1 0 5H9.5"/></svg></span>내 자리 확보</div>
+        <div class="vizchip b"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.9 4.9 1.8-4.9 1.8L12 16.4l-1.8-4.9L5.3 9.7l4.9-1.8L12 3z"/></svg></span>늘 깨끗한 차</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">How it works</span>
+        <h2 class="sec-t">차를 맡기는 게 아니라, 차를 '세워두는' 겁니다</h2>
+        <p class="sec-d" style="margin-left:auto;margin-right:auto;">출장·방문 세차는 하지 않습니다. 내 차가 케어존에 있으니 픽업·배달 비용이 0 — 그래서 더 싸고, 더 빠릅니다.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="no">1</div><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M9.5 16.5V7.5h3.3a2.5 2.5 0 0 1 0 5H9.5"/></svg></div><h3>케어존 구독</h3><p>집·회사 근처 올림포스 케어존을 골라 월정기 주차를 구독해요. 매일 밤 자리 전쟁 끝.</p><span class="tag">내 전용 주차 자리</span></div>
+        <div class="step"><div class="no">2</div><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s5.5 5.6 5.5 10a5.5 5.5 0 0 1-11 0C6.5 8.6 12 3 12 3z"/></svg></div><h3>예약하고 드라이브인</h3><p>세차가 필요하면 최소 1시간 전 예약 후 케어존에 들르세요. 현장팀이 실내·외 세차를 30분 안에. (워시 09:00~18:00 운영)</p><span class="tag">최소 1시간 전 예약</span></div>
+        <div class="step"><div class="no">3</div><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg></div><h3>알림톡으로 결과 확인</h3><p>세차 전·후 사진을 카카오 알림톡으로 보내드려요. 앱을 켜지 않아도 결과를 바로 확인.</p><span class="tag">전·후 사진 알림톡</span></div>
+      </div>
+
+      <div class="wash-note">
+        <div>
+          <div class="t">💧 주차 없이 세차만 원하세요?</div>
+          <div class="d">워시 패스로 OK — 케어존으로 차를 가져와 <b>1시간 전 예약</b> 후 <b>30분 이내 실내·외 세차 후 회차</b>. <b>월 2회 9,900원</b>부터(회당 약 5,000원), 세차 중 차량 근처에서 대기하셨다가 바로 수령하세요. (워시 <b>09:00~18:00</b> 운영)</div>
+        </div>
+        <div class="sp">
+          <button class="btn btn-primary btn-sm" onclick="go('#reserve')">워시케어 예약</button>
+          <button class="btn btn-line btn-sm" onclick="go('#plan-washpass')">워시 패스 보기</button>
+        </div>
+      </div>
+
+      <div class="compare">
+        <div class="side bad"><div class="k">기존 출장·방문 세차</div><div class="v">15,000~30,000원</div><div class="n">매 건 출장비·이동시간 포함</div></div>
+        <div class="vs">VS</div>
+        <div class="side good"><div class="k">올림포스 케어존 워시</div><div class="v">회당 5,000원대</div><div class="n">월 2회 9,900원부터 · 차가 케어존에 있어 물류비 0</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="zones">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Care Zones</span>
+        <h2 class="sec-t">수도권 9개 케어존, 지금 운영 중</h2>
+        <p class="sec-d" style="margin-left:auto;margin-right:auto;">내 생활권 케어존을 고르세요. 그 케어존이 내 주차 자리이자, 드라이브인 세차장이 됩니다.</p>
+      </div>
+      <div class="ctr-grid" id="zoneGrid"></div>
+      <p class="ctr-note">※ 케어존은 순차 확대 예정입니다. 폐쇄 케어존(남서울농협·서대문 타워50·AK기흥 케이엠파크)은 제외되어 있습니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="pricing">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Pricing</span>
+        <h2 class="sec-t">필요한 것만 고르세요</h2>
+        <p class="sec-d" style="margin-left:auto;margin-right:auto;">주차·세차는 단독으로도, 묶어서도. 모두 올림포스 케어존에서 이용합니다.</p>
+      </div>
+      <div class="price-grid" id="priceGrid"></div>
+      <p class="ctr-note">파크 패스·워시 패스는 단독 신청 가능하며, 운영 중인 케어존에서만 이용할 수 있어요. · 대리운전은 단독 신청 불가(파크 패스 가입 후 부가서비스로 추가). · 가격은 대표 케어존 기준이며 케어존별 시세에 따라 차등될 수 있습니다.</p>
+
+      <div class="finder-band">
+        <div>
+          <div class="t">🧭 어떤 게 맞을지 모르겠다면?</div>
+          <div class="d">30초 진단으로 나에게 딱 맞는 패키지를 찾아드려요.</div>
+        </div>
+        <div class="sp"><button class="btn btn-amber btn-lg" onclick="go('#finder')">내게 맞는 패키지 찾기</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head center"><span class="eyebrow">Why Olympos</span><h2 class="sec-t">왜 우리만 이 가격이 가능할까요?</h2></div>
+      <div class="feat-grid">
+        <div class="feat"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg></div><h4>우리 케어존이라서</h4><p>차가 우리 주차 케어존에 있으니 픽업·배달이 필요 없어요. 출장세차의 이동 비용이 우리에겐 0입니다.</p></div>
+        <div class="feat kk"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg></div><h4>전·후 사진 알림톡</h4><p>세차 전·후 사진을 카카오 알림톡으로 발송. 앱을 켜지 않아도 결과를 바로 확인해요.</p></div>
+        <div class="feat"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-3.5 7-9V5.5L12 3 5 5.5V12c0 5.5 7 9 7 9z"/><path d="m9 11.5 2 2 4-4"/></svg></div><h4>안심 케어</h4><p>작업 내역을 투명하게 공유하고, 보관·작업 전 과정에 보험을 적용합니다.</p></div>
+        <div class="feat"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></svg></div><h4>기다림 없이 30분</h4><p>현장팀이 케어존에 상주해 입차하면 바로 작업. 워시 서비스는 <b>09:00~18:00</b> 운영합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head center"><span class="eyebrow">FAQ</span><h2 class="sec-t">자주 묻는 질문</h2></div>
+      <div class="faq">
+        <details class="qa"><summary>출장 세차는 안 되나요?<span class="chev">⌄</span></summary><div class="a">네, 출장·방문 세차는 운영하지 않습니다. 차를 올림포스 케어존으로 가져오시면 케어존에서 실내·외 세차를 진행합니다. 덕분에 이동 비용이 없어 훨씬 저렴하고 빨라요(회당 약 5,000원).</div></details>
+        <details class="qa"><summary>세차만 따로 구독할 수 있나요?<span class="chev">⌄</span></summary><div class="a">네, <b>워시 패스</b>로 세차만 단독 구독할 수 있어요(파크 패스가 없어도 가능). <b>월 2회 9,900원</b>부터(회당 약 5,000원). 단, 차량이 올림포스 케어존으로 들어와야 하고 <b>최소 1시간 전에 예약</b>하셔야 합니다. 세차는 <b>30분 이내</b>에 실내·외로 끝나며, 세차 중 <b>차량 근처에서 대기</b>하셨다가 바로 수령(회차)하시면 됩니다. 전·후 사진은 <b>카카오 알림톡</b>으로 보내드려요. (주차 미포함 · 워시 <b>09:00~18:00</b> 운영)</div></details>
+        <details class="qa"><summary>워시 서비스 운영시간이 어떻게 되나요?<span class="chev">⌄</span></summary><div class="a">워시(세차) 서비스는 현재 <b>매일 09:00~18:00</b> 운영합니다. 세차는 30분 이내에 끝나므로, 마지막 예약은 마감 전 여유 있게 잡아 주세요. 운영시간은 순차 확대 예정입니다.</div></details>
+        <details class="qa"><summary>경정비는 어디까지 되나요?<span class="chev">⌄</span></summary><div class="a">풀케어에 포함된 경정비는 <b>엔진오일·워셔액 등 소모품 보충·교체, 타이어 공기압 확인, 전구 교체</b> 같은 <b>간단한 정비</b>만 진행합니다. 그 이상의 정비가 필요하면 제휴 정비소로 연계해 드려요.</div></details>
+        <details class="qa"><summary>컨시어지가 뭔가요?<span class="chev">⌄</span></summary><div class="a">바쁘신 프리미엄 오너분들을 위해, <b>1층 로비에서 바로 차량을 주차 입고</b>시켜 드립니다. 출차 시에도 <b>1층 로비에서 차량을 반납</b>받으시면 됩니다. 풀케어 요금제에 포함됩니다.</div></details>
+        <details class="qa"><summary>대리운전만 신청할 수는 없나요?<span class="chev">⌄</span></summary><div class="a">대리운전은 단독으로 신청할 수 없습니다. <b>파크 패스(주차)를 먼저 신청</b>하신 뒤 <b>부가서비스</b>로 추가하실 수 있어요.</div></details>
+        <details class="qa"><summary>지금 우리 동네에 케어존이 없으면요?<span class="chev">⌄</span></summary><div class="a">상담 신청을 남겨 주세요. 수요가 모이는 지역부터 케어존을 순차 확대하고, 개설 시 가장 먼저 안내드립니다.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="ctaband">
+        <h2>이미 내고 있는 주차비, 이젠 세차까지 받으세요</h2>
+        <p>가까운 케어존을 고르고 1분이면 구독 시작. 첫 달은 체험가로.</p>
+        <div class="acts">
+          <button class="btn btn-amber btn-lg" onclick="startSub('parkwash')">파크&amp;워시 구독하기</button>
+          <button class="btn btn-line btn-lg" style="background:transparent;border-color:rgba(255,255,255,.4);color:#fff;" onclick="go('#reserve')">워시케어 예약하기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PLAN DETAIL -->
+<div class="view" id="view-plan">
+  <div class="subhead"><div class="wrap"><a class="back" href="#home">← 홈으로</a></div></div>
+  <div class="pagepad"><div class="wrap"><div class="pd-grid" id="planBody"></div></div></div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="view" id="view-checkout">
+  <div class="subhead"><div class="wrap"><a class="back" href="#home">← 홈으로</a></div></div>
+  <div class="pagepad"><div class="wrap">
+    <h1 style="font-size:30px;font-weight:800;letter-spacing:-.04em;margin-bottom:6px;">구독 결제</h1>
+    <p style="color:var(--g600);font-weight:500;margin-bottom:28px;">케어존과 옵션을 고르면 요금이 바로 반영됩니다.</p>
+    <div class="co-grid" id="coBody"></div>
+  </div></div>
+</div>
+
+<!-- RESERVE (워시케어 예약창) -->
+<div class="view" id="view-reserve">
+  <div class="subhead"><div class="wrap"><a class="back" href="#home">← 홈으로</a></div></div>
+  <div class="pagepad"><div class="wrap" style="max-width:680px;">
+    <span class="eyebrow">Reservation</span>
+    <h1 style="font-size:30px;font-weight:800;letter-spacing:-.04em;margin:10px 0 6px;">워시케어 예약</h1>
+    <p style="color:var(--g600);font-weight:500;margin-bottom:24px;">케어존으로 차를 가져오시면 30분 안에 실내·외 세차 후 회차. 최소 1시간 전 예약, 운영시간 09:00~18:00.</p>
+    <div id="reserveBody"></div>
+  </div></div>
+</div>
+
+<!-- FINDER (패키지 찾기) -->
+<div class="view" id="view-finder">
+  <div class="subhead"><div class="wrap"><a class="back" href="#home">← 홈으로</a></div></div>
+  <div class="pagepad"><div class="wrap" style="max-width:680px;">
+    <span class="eyebrow">Finder</span>
+    <h1 style="font-size:30px;font-weight:800;letter-spacing:-.04em;margin:10px 0 6px;">나에게 맞는 패키지 찾기</h1>
+    <p style="color:var(--g600);font-weight:500;margin-bottom:24px;">3가지만 고르면 딱 맞는 요금제를 추천해 드려요. 30초면 충분해요.</p>
+    <div class="co-step" id="finderBody" style="margin-bottom:0;"></div>
+  </div></div>
+</div>
+
+<!-- CONSULT -->
+<div class="view" id="view-consult">
+  <div class="subhead"><div class="wrap"><a class="back" href="#home">← 홈으로</a></div></div>
+  <div class="pagepad"><div class="wrap" style="max-width:640px;">
+    <span class="eyebrow">Consult</span>
+    <h1 style="font-size:30px;font-weight:800;letter-spacing:-.04em;margin:10px 0 6px;">상담 신청</h1>
+    <p style="color:var(--g600);font-weight:500;margin-bottom:26px;">우리 동네 케어존·요금이 궁금하거나, 케어존 개설을 원하시면 남겨 주세요. 영업일 기준 1일 내 연락드립니다.</p>
+    <div class="co-step" style="margin-bottom:0;">
+      <div class="field"><label>이름</label><input id="cs_name" placeholder="홍길동"></div>
+      <div class="field"><label>연락처</label><input id="cs_phone" placeholder="010-0000-0000" inputmode="numeric"></div>
+      <div class="field"><label>관심 케어존</label><select id="cs_zone"></select></div>
+      <div class="field"><label>관심 요금제</label><select id="cs_plan">
+        <option value="parkpass">파크 패스 (주차)</option>
+        <option value="washpass">워시 패스 (세차만)</option>
+        <option value="parkwash" selected>파크 &amp; 워시 (주차+세차)</option>
+        <option value="fullcare">풀케어 (주차+세차+대리+경정비+컨시어지)</option>
+        <option value="none">아직 모르겠어요 / 케어존 개설 문의</option>
+      </select></div>
+      <div class="field"><label>남기실 말 (선택)</label><textarea id="cs_memo" placeholder="예) 우리 아파트 근처에 케어존이 생기면 좋겠어요"></textarea></div>
+      <button class="btn btn-primary btn-block btn-lg" style="margin-top:18px;" onclick="submitConsult()">상담 신청하기</button>
+      <p class="demo-note">프로토타입 데모입니다. 입력한 정보는 서버로 전송되지 않습니다.</p>
+    </div>
+  </div></div>
+</div>
+
+<!-- SUCCESS -->
+<div class="view" id="view-success">
+  <div class="pagepad"><div class="wrap"><div class="ok-wrap" id="okBody"></div></div></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="#home" class="logo"><span class="mk">O</span> 올림포스 <b>파크케어</b></a>
+        <p class="desc">차를 케어존에 두고, 들를 때마다 세차. 수도권 케어존 기반 차량 케어 구독 — 출장 없이, 가장 합리적인 가격으로.</p>
+        <p class="legal">㈜올림포스네트웍스 · 서울 송파구 오금로 233 · 정보통신업/플랫폼·렌터카중개<br>본 페이지는 서비스 기획 프로토타입으로, 표시된 가격·케어존·결제·예약은 데모이며 실제 청구·발송되지 않습니다.</p>
+      </div>
+      <div class="lk">
+        <div class="c"><h5>서비스</h5><a href="#how">이용 방법</a><a href="#zones">케어존 찾기</a><a href="#reserve">워시케어 예약</a><a href="#finder">패키지 찾기</a></div>
+        <div class="c"><h5>요금제</h5><a href="#plan-parkpass">파크 패스</a><a href="#plan-washpass">워시 패스</a><a href="#plan-parkwash">파크 &amp; 워시</a><a href="#plan-fullcare">풀케어</a></div>
+        <div class="c"><h5>문의</h5><a href="#consult">상담 신청</a><a href="#faq">자주 묻는 질문</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="badge-proto">PROTOTYPE · 데모</div>
+
+<script>
+/* ---------- data ---------- */
+const ZONES = [
+  {id:'helio',    name:'송파 헬리오시티',        area:'서울 송파구', tier:'A'},
+  {id:'magok',    name:'마곡 케이스퀘어',        area:'서울 강서구', tier:'A'},
+  {id:'changdong',name:'창동 씨드큐브',          area:'서울 도봉구', tier:'B'},
+  {id:'geoyeo',   name:'거여역 수아주',          area:'서울 송파구', tier:'B'},
+  {id:'bucheon',  name:'부천 대야 복합타워',      area:'경기 부천시', tier:'B'},
+  {id:'hwaseong', name:'화성 태안프라자',        area:'경기 화성시', tier:'C'},
+  {id:'yongin',   name:'용인 강남피아',          area:'경기 용인시', tier:'C'},
+  {id:'gwanggyo', name:'광교 메트로큐브 오피스텔', area:'경기 수원시', tier:'B'},
+  {id:'lh',       name:'LH 경기북부',            area:'경기 북부권', tier:'C'},
+];
+const tierPrice = {A:180000, B:140000, C:110000};
+/* 세차 단가 동기화: 회당 약 5,000원. 워시 패스(주차 없음)=순수 세차가, 파크&워시=주차 베이스 + 세차 증분 회당 5,000원 */
+const washTiers = {
+  park: [{n:2,price:139000,sub:'가볍게 유지'},{n:4,price:149000,sub:'가장 인기'},{n:6,price:159000,sub:'늘 새 차처럼'}],
+  wash: [{n:2,price:9900,sub:'회당 약 5,000원'},{n:4,price:18000,sub:'회당 4,500원'},{n:6,price:25000,sub:'회당 약 4,170원'}],
+};
+const WASH_TYPES = [
+  {id:'inout', label:'실내·외 세차', sub:'가장 인기'},
+  {id:'out',   label:'외부 세차',   sub:'겉만 깔끔하게'},
+  {id:'in',    label:'실내 세차',   sub:'시트·매트 집중'},
+  {id:'detail',label:'프리미엄 디테일', sub:'구석구석 정밀'},
+];
+const TIME_SLOTS = ['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'];
+
+const PLANS = {
+  parkpass:{ id:'parkpass', name:'파크 패스', tag:'주차 단독', hasPark:true, washType:null, feat:false,
+    cardNum:'119,000', cardUnit:'원~/월', priceLabel:'월 119,000원~', base:119000,
+    lead:'어차피 내는 주차비. 케어존에 내 전용 자리를 확보하는 가장 기본 요금제.',
+    bullets:['케어존 상시(전용) 월정기 주차','대리·경정비는 가입 후 부가서비스','운영 중인 케어존에서만 이용'],
+    includes:[['🅿️','케어존 상시주차','내 생활권 케어존에 전용 주차 자리'],['📱','앱 관리','입출차·이용내역을 앱에서 한눈에'],['➕','부가서비스','대리·세차·경정비를 자유롭게 추가'],['⬆️','자유로운 업그레이드','파크&워시·풀케어로 언제든 전환']],
+    note:'대리운전 등 부가서비스는 파크 패스 가입 후 추가하실 수 있어요.' },
+  washpass:{ id:'washpass', name:'워시 패스', tag:'세차 단독 · 예약제', hasPark:false, washType:'wash', washDefault:2, feat:false,
+    cardNum:'9,900', cardUnit:'원/월~', priceLabel:'월 9,900~25,000원', base:9900,
+    lead:'주차 없이 세차만. 케어존으로 차를 가져오시면 30분 안에 실내·외 세차 후 바로 회차합니다. 월 2회 9,900원, 회당 약 5,000원. (워시 09:00~18:00 운영)',
+    bullets:['주차 없이 세차만 단독 신청','월 2회 9,900원 (회당 약 5,000원)','케어존 입고 + 최소 1시간 전 예약','전·후 사진 알림톡 발송'],
+    includes:[['💧','실내·외 세차','케어존 드라이브인, 회당 30분 이내'],['⏰','예약제 · 09~18시','최소 1시간 전 예약 후 입고'],['🔁','회차 진행','세차 후 바로 출차(회차)'],['💬','알림톡 발송','전·후 사진을 카카오 알림톡으로']],
+    note:'예약제 — 최소 1시간 전 예약 후 입고(운영 09:00~18:00). 30분 이내 실내·외 세차 후 회차하며, 세차 중 차량 근처에서 대기하셨다가 바로 수령합니다. 전·후 사진은 알림톡으로 발송됩니다. (주차 미포함)' },
+  parkwash:{ id:'parkwash', name:'파크 & 워시', tag:'주차 + 세차 · 주력', hasPark:true, washType:'park', washDefault:4, feat:true,
+    cardNum:'149,000', cardUnit:'원/월', priceLabel:'월 149,000원', base:149000,
+    lead:'주차비 내듯 내면 세차가 딸려옵니다. 케어존에 들를 때마다 실내·외 세차를 30분 만에.',
+    bullets:['케어존 상시주차 + 실내·외 세차','세차 월 2 / 4 / 6회 선택','예약 후 드라이브인 30분','전·후 사진 알림톡 발송'],
+    includes:[['🅿️','케어존 상시주차','전용 자리 + 야간 안심 주차'],['💧','케어존 드라이브인 세차','실내·외 세차, 회당 30분'],['🔁','횟수 선택','월 2·4·6회 중 라이프스타일대로'],['💬','전·후 사진 알림톡','작업 결과를 알림톡으로 바로 확인']],
+    note:'세차는 최소 1시간 전 예약 후 진행됩니다(워시 09:00~18:00). 대리운전은 부가서비스로 추가할 수 있어요.' },
+  fullcare:{ id:'fullcare', name:'풀케어', tag:'주차+세차+대리+경정비+컨시어지', hasPark:true, washType:null, feat:false,
+    cardNum:'279,000', cardUnit:'원/월', priceLabel:'월 279,000원', base:279000,
+    lead:'차 관리 자체를 잊으세요. 주차·세차에 대리·경정비·컨시어지(로비 발렛)까지.',
+    bullets:['상시주차 + 세차 월 6회','대리 월 4회 포함','경정비(간단 정비) + 소모품 관리','컨시어지 — 1층 로비 입·출차'],
+    includes:[['🅿️','케어존 상시주차','전용 자리 + 우선 케어'],['💧','세차 월 6회','실내·외 + 격주 디테일 케어'],['🚕','대리 월 4회','회식·장거리, 안전하게'],['🛎️','컨시어지','1층 로비에서 차량 입·출차 대행'],['🔧','경정비·소모품','엔진오일·타이어 공기압·전구 등 간단 정비'],['💬','전·후 사진 알림톡','모든 케어 결과를 알림톡으로']],
+    note:'컨시어지 — 1층 로비에서 차량을 입·출차해 드립니다. 경정비는 엔진오일·소모품 교체 등 간단한 정비만 포함되며, 그 이상은 제휴 정비소로 연계됩니다.' },
+};
+const promoFirst = {parkpass:0, washpass:0, parkwash:99000, fullcare:199000};
+const PORDER = ['parkpass','washpass','parkwash','fullcare'];
+
+/* ---------- state ---------- */
+const state = { plan:'parkwash', zone:null, wash:4, pay:'card' };
+const reserve = { zone:'', type:'inout', date:'', time:'', plate:'', phone:'' };
+const finder = { q1:null, q2:null, q3:null };
+const won = n => n.toLocaleString('ko-KR') + '원';
+function chk(){return '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';}
+
+/* ---------- home lists ---------- */
+function renderZones(){
+  document.getElementById('zoneGrid').innerHTML = ZONES.map(z=>`
+    <div class="ctr-card" onclick="pickZoneFromHome('${z.id}')">
+      <div class="top"><span class="area">${z.area}</span><span class="live"><span class="d"></span>운영중</span></div>
+      <h4>${z.name}</h4>
+      <p>전용 월정기 주차 · 드라이브인 세차 가능</p>
+    </div>`).join('');
+  const opts = ZONES.map(z=>`<option value="${z.id}">${z.name} (${z.area})</option>`).join('');
+  document.getElementById('cs_zone').innerHTML = opts + '<option value="none">우리 동네 케어존 개설 문의</option>';
+}
+function renderPricing(){
+  document.getElementById('priceGrid').innerHTML = PORDER.map(id=>{
+    const p=PLANS[id];
+    const li=p.bullets.map(b=>`<li>${chk()}<span>${b}</span></li>`).join('');
+    const base = p.hasPark ? `<div class="pbase">🅿️ 케어존 상시주차 ${id==='fullcare'||id==='parkwash'?'기본 포함':'단독'}</div>` : `<div class="pbase gray">💧 세차 단독 · 예약제</div>`;
+    return `<div class="pcard ${p.feat?'feat':''}">
+      ${p.feat?'<span class="badge">가장 인기</span>':''}
+      <div class="pname">${p.name}</div><div class="ptag">${p.tag}</div>
+      <div class="pprice"><b>${p.cardNum}</b><span>${p.cardUnit}</span></div>${base}
+      <ul>${li}</ul>
+      <div class="pacts">
+        <button class="btn ${p.feat?'btn-primary':'btn-line'} btn-block btn-sm" onclick="startSub('${id}')">${id==='parkpass'?'주차 신청':'구독하기'}</button>
+        <button class="btn btn-ghost btn-block btn-sm" onclick="go('#plan-${id}')">자세히</button>
+      </div></div>`;
+  }).join('');
+}
+
+/* ---------- plan detail ---------- */
+function renderPlan(id){
+  const p=PLANS[id]; if(!p){ go('#home'); return; }
+  const inc=p.includes.map(i=>`<div class="i"><div class="e">${i[0]}</div><div><b>${i[1]}</b><p>${i[2]}</p></div></div>`).join('');
+  const promo=promoFirst[id]?`<div class="promo">첫 달 체험가 ${won(promoFirst[id])} · 이후 ${p.priceLabel}</div>`:'';
+  const flow = id==='washpass'
+    ? `<div class="pd-flow"><b>이용 방법 (워시 패스 · 월 2회 9,900원 · 운영 09:00~18:00)</b><br>① 앱에서 <b>최소 1시간 전 예약</b> → ② 올림포스 케어존으로 차량 입고 → ③ <b>30분 이내</b> 실내·외 세차 → ④ 세차 중 차량 근처에서 대기 → ⑤ 세차 완료 후 <b>바로 수령(회차)</b> → ⑥ 전·후 사진 <b>알림톡 발송</b>. 주차는 포함되지 않습니다.</div>`
+    : id==='fullcare'
+    ? `<div class="pd-flow"><b>컨시어지</b> — 바쁘신 프리미엄 오너분들을 위해 <b>1층 로비에서 바로 차량을 주차 입고</b>시켜 드립니다. 출차 시에도 <b>1층 로비에서 차량을 반납</b>받으시면 됩니다. <b>경정비</b>는 엔진오일·소모품 교체, 타이어 공기압·전구 등 간단한 정비만 포함되며, 그 이상은 제휴 정비소로 연계됩니다.</div>`
+    : `<div class="pd-flow">모든 파크 요금제는 <b>케어존 상시주차</b>가 기본입니다. 세차는 출장이 아니라 <b>케어존 드라이브인(최소 1시간 전 예약 · 워시 09:00~18:00)</b>으로 진행되고, 전·후 사진은 알림톡으로 보내드립니다.</div>`;
+  const priceNum = id==='parkpass' ? '119,000~' : (id==='washpass'?'9,900~25,000':won(p.base).replace('원',''));
+  document.getElementById('planBody').innerHTML=`
+    <div class="pd-main">
+      <span class="eyebrow">${p.tag}</span><h1>${p.name}</h1><p class="lead">${p.lead}</p>
+      <div class="pd-block"><h3>이렇게 구성돼요</h3><div class="pd-inc">${inc}</div></div>
+      <div class="pd-block"><h3>이용 안내</h3>${flow}</div>
+    </div>
+    <aside class="pd-side">
+      <div class="pn">${p.tag}</div><div class="pp"><b>${priceNum}</b><span>원 / 월</span></div>${promo}
+      <div class="acts">
+        <button class="btn btn-primary btn-block btn-lg" onclick="startSub('${id}')">${id==='parkpass'?'주차 신청하기':'이 요금제로 구독하기'}</button>
+        ${id==='washpass'?'<button class="btn btn-amber btn-block" onclick="go(\'#reserve\')">바로 워시케어 예약</button>':''}
+        <button class="btn btn-line btn-block" onclick="go('#consult')">먼저 상담 받기</button>
+      </div>
+    </aside>`;
+}
+
+/* ---------- checkout ---------- */
+function startSub(id){ state.plan=id; if(PLANS[id].washType) state.wash=PLANS[id].washDefault||2; go('#checkout'); }
+function renderCheckout(){
+  const p=PLANS[state.plan];
+  const zoneCards=ZONES.map(z=>`
+    <div class="opt ${state.zone===z.id?'sel':''}" onclick="setZone('${z.id}')">
+      <div><div class="nm">${z.name}</div><div class="sub">${z.area} · 전용 주차 + 세차</div></div><div class="rd"></div></div>`).join('');
+  let stepNo=2;
+  const washBlock = p.washType ? (()=>{ stepNo++; const tiers=washTiers[p.washType];
+    return `<div class="co-step"><div class="st"><span class="no">${stepNo}</span><h3>세차 횟수</h3></div>
+      <div class="opt-grid">${tiers.map(w=>`<div class="opt ${state.wash===w.n?'sel':''}" onclick="setWash(${w.n})">
+        <div><div class="nm">월 ${w.n}회</div><div class="sub">${w.sub} · ${won(w.price)}/월</div></div><div class="rd"></div></div>`).join('')}</div></div>`; })() : '';
+  const payNo=stepNo+1;
+  const cardForm = state.pay==='card' ? `
+    <div class="field"><label>카드 번호</label><input placeholder="0000 0000 0000 0000" inputmode="numeric" maxlength="19"></div>
+    <div class="field row"><div><label>유효기간</label><input placeholder="MM / YY" maxlength="7"></div><div><label>CVC</label><input placeholder="000" inputmode="numeric" maxlength="3"></div></div>
+    <div class="field"><label>카드 비밀번호 앞 2자리</label><input placeholder="••" type="password" maxlength="2" style="width:90px"></div>`
+    : `<div class="demo-note" style="margin-top:4px;">${state.pay==='toss'?'토스페이먼츠':'카카오페이'} 간편결제 화면으로 이동합니다 (데모에서는 생략).</div>`;
+  document.getElementById('coBody').innerHTML=`
+    <div class="co-left">
+      <div class="co-step"><div class="st"><span class="no">1</span><h3>요금제</h3></div>
+        <div class="opt-grid">${PORDER.map(id=>`<div class="opt ${state.plan===id?'sel':''}" onclick="setPlan('${id}')">
+          <div><div class="nm">${PLANS[id].name}</div><div class="sub">${PLANS[id].tag}</div></div><div class="rd"></div></div>`).join('')}</div>
+        <div class="info-note">${p.note}</div></div>
+      <div class="co-step"><div class="st"><span class="no">2</span><h3>${p.hasPark?'파크 케어존 선택':'세차받을 케어존 선택'}</h3></div>
+        <div class="opt-grid">${zoneCards}</div></div>
+      ${washBlock}
+      <div class="co-step"><div class="st"><span class="no">${payNo}</span><h3>결제 수단</h3></div>
+        <div class="pay-tabs">
+          <div class="pay-tab ${state.pay==='card'?'sel':''}" onclick="setPay('card')">신용·체크카드</div>
+          <div class="pay-tab ${state.pay==='toss'?'sel':''}" onclick="setPay('toss')">토스페이</div>
+          <div class="pay-tab ${state.pay==='kakao'?'sel':''}" onclick="setPay('kakao')">카카오페이</div>
+        </div>${cardForm}
+        <label class="chk"><input type="checkbox" id="agree"><span>서비스 이용약관 및 개인정보 처리방침, 자동결제(정기구독)에 동의합니다.</span></label>
+        <div class="demo-note">프로토타입 데모입니다. 실제 결제는 이루어지지 않으며, 카드 정보는 어디에도 전송·저장되지 않습니다.</div></div>
+    </div>
+    <aside class="co-side" id="coSide"></aside>`;
+  renderSummary();
+}
+function curPrice(){
+  const p=PLANS[state.plan];
+  if(p.washType){ return (washTiers[p.washType].find(w=>w.n===state.wash)||washTiers[p.washType][0]).price; }
+  if(state.plan==='parkpass'){ return p.base; }
+  return p.base;
+}
+function renderSummary(){
+  const p=PLANS[state.plan];
+  const monthly=curPrice(); const promo=promoFirst[state.plan]; const first=promo?promo:monthly;
+  const zname=state.zone?ZONES.find(z=>z.id===state.zone).name:'<span style="color:var(--g500)">미선택</span>';
+  let lines=`<div class="sline"><span>요금제</span><span class="v">${p.name}</span></div><div class="sline"><span>케어존</span><span class="v">${zname}</span></div>`;
+  if(p.washType) lines+=`<div class="sline"><span>세차</span><span class="v">월 ${state.wash}회</span></div>`;
+  if(p.id==='fullcare') lines+=`<div class="sline"><span>세차 · 대리</span><span class="v">월 6회 · 대리 4회</span></div><div class="sline"><span>경정비 · 컨시어지</span><span class="v">포함 · 로비 발렛</span></div>`;
+  if(!p.hasPark) lines+=`<div class="sline muted"><span>주차</span><span class="v">미포함 · 예약제</span></div>`;
+  document.getElementById('coSide').innerHTML=`
+    <h3>주문 요약</h3>${lines}
+    <div class="sline muted"><span>월 구독료</span><span class="v">${won(monthly)}</span></div>
+    ${promo?`<div class="sline" style="color:var(--amber-600)"><span>첫 달 체험 할인</span><span class="v" style="color:var(--amber-600)">- ${won(monthly-promo)}</span></div>`:''}
+    <div class="sdiv"></div>
+    <div class="stotal"><span class="l">첫 결제 금액</span><span class="v">${won(first)}</span></div>
+    <div class="after">다음 달부터 ${won(monthly)} 정기결제</div>
+    <button class="btn btn-primary btn-block btn-lg" style="margin-top:18px;" onclick="pay()">${won(first)} 결제하기</button>
+    <button class="btn btn-ghost btn-block btn-sm" style="margin-top:8px;" onclick="go('#consult')">결제 대신 상담 신청</button>`;
+}
+function setPlan(id){ state.plan=id; if(PLANS[id].washType&&!washTiers[PLANS[id].washType].some(w=>w.n===state.wash)) state.wash=PLANS[id].washDefault||2; renderCheckout(); }
+function setZone(id){ state.zone=id; renderCheckout(); }
+function setWash(n){ state.wash=n; renderCheckout(); }
+function setPay(p){ state.pay=p; renderCheckout(); }
+function pickZoneFromHome(id){ state.zone=id; state.plan='parkwash'; state.wash=4; go('#checkout'); }
+
+/* ---------- 워시케어 예약 ---------- */
+function renderReserve(){
+  const zoneOpts = '<option value="">케어존을 선택하세요</option>' + ZONES.map(z=>`<option value="${z.id}" ${reserve.zone===z.id?'selected':''}>${z.name} (${z.area})</option>`).join('');
+  const types = WASH_TYPES.map(t=>`<div class="opt ${reserve.type===t.id?'sel':''}" onclick="setR('type','${t.id}')"><div><div class="nm">${t.label}</div><div class="sub">${t.sub}</div></div><div class="rd"></div></div>`).join('');
+  const slots = TIME_SLOTS.map(s=>`<div class="slot ${reserve.time===s?'sel':''}" onclick="setR('time','${s}')">${s}</div>`).join('');
+  document.getElementById('reserveBody').innerHTML=`
+    <div class="co-step" style="margin-bottom:0;">
+      <div class="field"><label>케어존 선택</label><select id="r_zone" onchange="setR('zone',this.value)">${zoneOpts}</select></div>
+      <div class="field"><label>세차 종류</label><div class="opt-grid">${types}</div></div>
+      <div class="field row">
+        <div><label>날짜</label><input id="r_date" type="date" onchange="setR('date',this.value)" value="${reserve.date}"></div>
+        <div><label>차량 번호 (선택)</label><input id="r_plate" placeholder="12가 3456" value="${reserve.plate}" oninput="reserve.plate=this.value"></div>
+      </div>
+      <div class="field"><label>시간 (운영 09:00~18:00 · 최소 1시간 전 예약)</label><div class="slot-grid">${slots}</div></div>
+      <div class="field"><label>연락처 (알림톡 수신)</label><input id="r_phone" placeholder="010-0000-0000" inputmode="numeric" value="${reserve.phone}" oninput="reserve.phone=this.value"></div>
+      <div class="info-note kk">💬 세차 전·후 사진을 입력하신 번호로 <b>카카오 알림톡</b> 발송해 드립니다. · 세차는 30분 이내 실내·외 진행 후 회차하며, 차량 근처에서 대기하셨다가 바로 수령하세요.</div>
+      <button class="btn btn-primary btn-block btn-lg" style="margin-top:16px;" onclick="submitReserve()">워시케어 예약하기</button>
+      <p class="demo-note">프로토타입 데모입니다. 실제 예약·알림톡은 발송되지 않습니다.</p>
+    </div>`;
+}
+function setR(k,v){ reserve[k]=v; renderReserve(); }
+function submitReserve(){
+  if(!reserve.zone){ alert('케어존을 선택해 주세요.'); return; }
+  if(!reserve.date){ alert('날짜를 선택해 주세요.'); return; }
+  if(!reserve.time){ alert('시간을 선택해 주세요.'); return; }
+  if(!reserve.phone.trim()){ alert('알림톡 받으실 연락처를 입력해 주세요.'); return; }
+  const zname=ZONES.find(z=>z.id===reserve.zone).name;
+  const tlabel=WASH_TYPES.find(t=>t.id===reserve.type).label;
+  const rid='WC'+Date.now().toString().slice(-8);
+  document.getElementById('okBody').innerHTML=`
+    <div class="ok-ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h1>워시케어 예약 완료</h1>
+    <p>${zname} 케어존으로 예약된 시간에 입고해 주세요.<br>세차는 30분 이내, 차량 근처에서 대기 후 바로 수령(회차)하시면 됩니다.</p>
+    <div class="ok-card">
+      <div class="sline"><span>예약번호</span><span class="v">${rid}</span></div>
+      <div class="sline"><span>케어존</span><span class="v">${zname}</span></div>
+      <div class="sline"><span>일시</span><span class="v">${reserve.date} ${reserve.time}</span></div>
+      <div class="sline"><span>세차 종류</span><span class="v">${tlabel}</span></div>
+      ${reserve.plate?`<div class="sline"><span>차량</span><span class="v">${reserve.plate}</span></div>`:''}
+    </div>
+    <div class="ok-kk">💬 세차 전·후 사진을 ${reserve.phone}로 카카오 알림톡 발송해 드려요</div>
+    <button class="btn btn-primary btn-block btn-lg" style="margin-top:20px;" onclick="go('#home')">홈으로 돌아가기</button>
+    <p class="demo-note" style="text-align:center;margin-top:14px;">프로토타입 데모 — 실제 예약·알림톡은 발송되지 않았습니다.</p>`;
+  go('#success');
+}
+
+/* ---------- 패키지 찾기(finder) ---------- */
+function renderFinder(){
+  const Q=[
+    {k:'q1', q:'1. 주차 자리도 필요하세요?', opts:[['yes','네, 내 전용 주차 자리가 필요해요'],['no','아니요, 세차만 받을래요']]},
+    {k:'q2', q:'2. 세차는 얼마나 자주 받으세요?', opts:[['2','가끔 (월 2회)'],['4','보통 (월 4회)'],['6','자주 (월 6회)'],['0','세차는 필요 없어요']]},
+    {k:'q3', q:'3. 대리·경정비·로비 발렛(컨시어지)까지 맡기고 싶으세요?', opts:[['yes','네, 다 맡길래요'],['no','아니요, 주차·세차면 충분해요']]},
+  ];
+  const qs=Q.map(o=>`<div class="finder-q"><div class="ql">${o.q}</div><div class="opt-grid">${o.opts.map(op=>`<div class="opt ${finder[o.k]===op[0]?'sel':''}" onclick="setF('${o.k}','${op[0]}')"><div class="nm">${op[1]}</div><div class="rd"></div></div>`).join('')}</div></div>`).join('');
+  const ready=finder.q1&&finder.q2&&finder.q3;
+  document.getElementById('finderBody').innerHTML = qs +
+    `<button class="btn btn-primary btn-block btn-lg" style="margin-top:6px;" ${ready?'':'disabled'} onclick="showRec()">결과 보기</button>`;
+}
+function setF(k,v){ finder[k]=v; renderFinder(); }
+function recommend(){
+  if(finder.q1==='no'){
+    if(finder.q2==='0') return {id:'washpass', wash:2, why:'주차·정기 세차가 둘 다 꼭 필요하진 않으시네요. 부담 없는 워시 패스로 필요할 때만 한 번씩 세차하시거나, 상담으로 케어존 개설 문의를 남겨보셔도 좋아요.'};
+    return {id:'washpass', wash:parseInt(finder.q2),
+      why:'주차는 필요 없고 세차만 원하시니, 예약 후 들러 30분 만에 세차하고 회차하는 워시 패스가 딱이에요. 월 2회 9,900원부터로 가장 가볍게 시작할 수 있어요.'};
+  }
+  if(finder.q2==='0') return {id:'parkpass', why:'주차 자리는 필요하지만 세차는 안 하시니, 내 전용 자리를 확보하는 파크 패스를 추천해요. 세차·대리·경정비는 나중에 부가서비스로 추가할 수 있어요.'};
+  if(finder.q3==='yes') return {id:'fullcare', why:'주차·세차에 대리·경정비·로비 발렛까지 한 번에 맡기고 싶으시니, 모든 게 포함된 풀케어가 가장 잘 맞아요.'};
+  return {id:'parkwash', wash:parseInt(finder.q2), why:'주차 자리와 정기 세차를 함께 원하시니, "주차비에 세차가 딸려오는" 주력 상품 파크 & 워시가 가장 합리적이에요.'};
+}
+function showRec(){
+  const r=recommend(); const p=PLANS[r.id];
+  const priceTxt = r.id==='parkpass' ? '월 119,000원~'
+    : r.id==='washpass' ? `월 ${won(washTiers.wash.find(w=>w.n===r.wash).price)} (세차 ${r.wash}회)`
+    : r.id==='parkwash' ? `월 ${won(washTiers.park.find(w=>w.n===r.wash).price)} (세차 ${r.wash}회)`
+    : '월 279,000원';
+  document.getElementById('finderBody').innerHTML=`
+    <div class="rec-head">${chk()} 진단 결과 · 추천 요금제</div>
+    <div class="rec-name">${p.name}</div>
+    <div class="rec-why">${r.why}</div>
+    <div class="rec-price">${priceTxt}</div>
+    <div style="display:flex;flex-direction:column;gap:9px;margin-top:22px;">
+      <button class="btn btn-primary btn-block btn-lg" onclick="recSub('${r.id}',${r.wash||0})">이 요금제로 ${r.id==='washpass'?'세차 시작':'구독하기'}</button>
+      <button class="btn btn-line btn-block" onclick="go('#plan-${r.id}')">자세히 보기</button>
+      <button class="btn btn-ghost btn-block btn-sm" onclick="resetFinder()">다시 진단하기</button>
+    </div>`;
+}
+function recSub(id,wash){ if(wash) state.wash=wash; startSub(id); }
+function resetFinder(){ finder.q1=finder.q2=finder.q3=null; renderFinder(); }
+
+/* ---------- consult ---------- */
+function submitConsult(){
+  const nm=document.getElementById('cs_name').value.trim();
+  const ph=document.getElementById('cs_phone').value.trim();
+  if(!nm||!ph){ alert('이름과 연락처를 입력해 주세요.'); return; }
+  document.getElementById('okBody').innerHTML=`
+    <div class="ok-ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg></div>
+    <h1>상담 신청이 접수됐어요</h1>
+    <p>${nm}님, 남겨주신 연락처로 영업일 기준 1일 내에 연락드릴게요.</p>
+    <button class="btn btn-primary btn-block btn-lg" style="margin-top:24px;" onclick="go('#home')">홈으로 돌아가기</button>
+    <p class="demo-note" style="text-align:center;margin-top:14px;">프로토타입 데모 — 입력 정보는 전송되지 않았습니다.</p>`;
+  go('#success');
+}
+
+/* ---------- 결제 ---------- */
+function pay(){
+  const p=PLANS[state.plan];
+  if(!state.zone){ alert('케어존을 선택해 주세요.'); return; }
+  const ag=document.getElementById('agree'); if(ag&&!ag.checked){ alert('약관에 동의해 주세요.'); return; }
+  const monthly=curPrice(); const promo=promoFirst[state.plan]; const first=promo?promo:monthly;
+  const zname=ZONES.find(z=>z.id===state.zone).name; const oid='OL'+Date.now().toString().slice(-8);
+  const sub = p.id==='washpass'
+    ? `${zname} 케어존에서 워시 패스 구독이 시작됐어요.<br>예약하고 들르시면 30분 세차 후 바로 출차(회차)하세요.`
+    : `${zname} 케어존에서 ${p.name} 구독이 활성화됐습니다.<br>이제 들를 때마다 깨끗한 차로 출차하세요.`;
+  const planLine = p.id==='washpass' ? `워시 패스 · 세차 월 ${state.wash}회 (예약제)`
+    : p.id==='parkwash' ? `파크 & 워시 · 세차 월 ${state.wash}회`
+    : p.id==='fullcare' ? `풀케어 · 세차6·대리4·경정비·컨시어지` : `파크 패스 (주차)`;
+  document.getElementById('okBody').innerHTML=`
+    <div class="ok-ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h1>구독이 시작됐어요</h1><p>${sub}</p>
+    <div class="ok-card">
+      <div class="sline"><span>주문번호</span><span class="v">${oid}</span></div>
+      <div class="sline"><span>요금제</span><span class="v">${planLine}</span></div>
+      <div class="sline"><span>케어존</span><span class="v">${zname}</span></div>
+      <div class="sline"><span>첫 결제</span><span class="v">${won(first)}</span></div>
+      <div class="sline muted"><span>다음 달부터</span><span class="v">${won(monthly)} / 월</span></div>
+    </div>
+    <div class="ok-kk">💬 세차 전·후 사진을 카카오 알림톡으로 보내드려요</div>
+    <button class="btn btn-primary btn-block btn-lg" style="margin-top:20px;" onclick="go('#home')">홈으로 돌아가기</button>
+    <p class="demo-note" style="text-align:center;margin-top:14px;">프로토타입 데모 — 실제 결제·청구되지 않았습니다.</p>`;
+  go('#success');
+}
+
+/* ---------- router ---------- */
+function go(hash){ if(location.hash===hash){ router(); } else { location.hash=hash; } }
+function show(id){ document.querySelectorAll('.view').forEach(v=>v.classList.remove('on')); document.getElementById(id).classList.add('on'); a11y(); }
+function router(){
+  const h=location.hash||'#home';
+  if(h.startsWith('#plan-')){ renderPlan(h.replace('#plan-','')); show('view-plan'); }
+  else if(h==='#checkout'){ renderCheckout(); show('view-checkout'); }
+  else if(h==='#reserve'){ renderReserve(); show('view-reserve'); }
+  else if(h==='#finder'){ renderFinder(); show('view-finder'); }
+  else if(h==='#consult'){ show('view-consult'); }
+  else if(h==='#success'){ show('view-success'); }
+  else if(h!=='#home' && h.startsWith('#') && document.querySelector(h)){
+    show('view-home'); const el=document.querySelector(h); if(el){ setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),40); return; }
+  } else { show('view-home'); }
+  window.scrollTo(0,0);
+}
+function toggleNav(){ const n=document.querySelector('header.nav'); const o=n.classList.toggle('open'); const b=document.querySelector('.navtoggle'); if(b) b.setAttribute('aria-expanded', o); }
+function a11y(){ document.querySelectorAll('.opt,.slot,.pay-tab,.ctr-card').forEach(el=>{ if(!el.hasAttribute('tabindex')){ el.setAttribute('tabindex','0'); el.setAttribute('role','button'); } }); }
+document.addEventListener('keydown', e=>{ if((e.key==='Enter'||e.key===' ') && e.target.matches && e.target.matches('.opt,.slot,.pay-tab,.ctr-card')){ e.preventDefault(); e.target.click(); } });
+window.addEventListener('hashchange', router);
+renderZones(); renderPricing(); router();
+</script>
+</body>
+</html>
