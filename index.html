@@ -211,6 +211,12 @@ table.career{ width:100%; border-collapse:collapse; }
 .strengths{margin-top:7mm}
 </style>
 
+<style media="screen">
+html{ background:#E9EEF7; }
+body{ background:#E9EEF7; }
+.page{ margin:28px auto; box-shadow:0 6px 28px rgba(13,27,52,.14); border-radius:4px; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="page cover">
@@ -511,5 +517,17 @@ table.career{ width:100%; border-collapse:collapse; }
 <div class="tcontact">✉ <b>tak2154@naver.com</b> &nbsp;·&nbsp; ☎ <b>010-4694-5203</b><br>서울 강남구</div>
 </div>
 
+<script>
+(function(){
+  var W=794; // A4 폭(210mm) 기준 px
+  function fit(){
+    var z=Math.min(1.6,(window.innerWidth-32)/W);
+    document.body.style.zoom=z>0?z:1;
+  }
+  fit(); window.addEventListener('resize',fit);
+  window.addEventListener('beforeprint',function(){document.body.style.zoom=1;});
+  window.addEventListener('afterprint',fit);
+})();
+</script>
 </body>
 </html>
