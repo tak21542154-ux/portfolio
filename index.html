@@ -55,7 +55,7 @@ body{ font-family:'Pretendard Variable','Pretendard','Malgun Gothic',sans-serif;
 .card.soft{ background:#F6F9FF; box-shadow:none; border:1px solid var(--line); }
 .num{ width:30px; height:30px; border-radius:50%; background:var(--pale); color:var(--blue); font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
 .stack{ display:flex; flex-direction:column; gap:14px; height:100%; }
-.stack .card{ flex:1; }
+.stack .card{ flex:1; padding-top:18px; padding-bottom:18px; }
 
 .band{ background:var(--blue); color:#fff; border-radius:18px; padding:16px 26px; text-align:center; font-size:17px; font-weight:700; box-shadow:0 12px 30px rgba(31,91,255,.25); }
 .band small{ display:block; font-size:12px; font-weight:700; letter-spacing:.2em; opacity:.8; margin-bottom:3px; }
@@ -125,8 +125,11 @@ img.shot.ct{ object-fit:contain; background:#0F1626; }
 .cover .detail .ct{ margin-left:auto; text-align:right; }
 
 .shotbox .cap{ font-size:13px; line-height:1.55; }
-.cover .capc{ position:absolute !important; left:72px; top:416px; width:520px; font-size:12px; line-height:1.5; color:var(--muted); }
+.cover .capc{ position:absolute !important; left:72px; top:444px; width:520px; font-size:12px; line-height:1.5; color:var(--muted); }
 .case .card p{ font-size:16px; line-height:1.66; }
+.c2b .card p{ font-size:14.5px; line-height:1.56; }
+.stack .card li{ font-size:15.5px; line-height:1.58; margin-top:8px; }
+.stack .card .k{ font-size:13px; }
 .case .card li{ font-size:15.5px; line-height:1.6; margin-top:9px; }
 .case .card h4{ font-size:22px; }
 .case .card.blue .big{ font-size:40px; font-weight:800; line-height:1.1; margin-top:12px; letter-spacing:-.02em; }
@@ -153,8 +156,8 @@ img.shot.ct{ object-fit:contain; background:#0F1626; }
   <div class="tl">YU KYUNGTAK</div>
   <div class="tr">2026 Portfolio<br>사업기획 · AX</div>
   <h1>기획하고,<br>직접 만들고,<br><em>자동화합니다.</em></h1>
-  <div class="lead">대표이사로 9년 2개월, 한 그룹에서 <b>다섯 개 사업</b>을 런칭하고 운영했습니다. 지금은 AI로 기획서·제안서·IR 문서와 <span class="nw">랜딩·프로토타입</span>을 직접 만듭니다.</div>
-  <div class="capc">※ 알파 화면은 개발사 구현(데모 데이터). 파크케어 랜딩은 기획·카피·화면 구성은 직접, 구현은 AI로 한 1인 제작이고, 복구온은 화면 흐름·랜딩 설계입니다.</div>
+  <div class="lead">대표이사로 9년 2개월, <b>다섯 개 사업</b>을 런칭하고 운영했습니다.<br>이제는 업무 병목을 요구사항으로 정의하고 <span class="nw">AI 도입 방향을</span> 잡는 <span class="nw">AX 역할을</span> 맡아, <span class="nw">정부지원 과제</span> 수주로 회사 가치를 높이려 합니다.</div>
+  <div class="capc">※ 알파 화면은 개발사 구현(데모 데이터). 파크케어 랜딩은 <span class="nw">기획·카피·화면</span> 구성은 직접, 구현은 AI로 한 <span class="nw">1인 제작이고,</span> 복구온은 화면 <span class="nw">흐름·랜딩</span> 설계입니다.</div>
   <div class="pics">
     <img src="assets/alpha_screen_demo.png" style="left:0;top:50px;width:340px;transform:rotate(-5deg);" alt="">
     <img src="assets/bokguon_crop.png" style="left:230px;top:0;width:320px;transform:rotate(3deg);" alt="">
@@ -172,147 +175,177 @@ img.shot.ct{ object-fit:contain; background:#0F1626; }
 <section class="slide">
   <div class="top"><div class="tag">Group History</div></div>
   <div class="hd">한 그룹, <em>다섯 개 사업</em> —<br>9년 2개월 동안 직접 런칭하고 운영했습니다</div>
-  <div class="sub">톡톡스탁 창업(2016.07)부터 그룹 정리(2025.09)까지, 사업이 하나씩 세워진 순서입니다.</div>
+  <div class="sub">톡톡스탁 창업(2016.07)부터 그룹 정리(2025.09)까지 — 대표이사로서 직접 세우고, 정리 시점도 스스로 정했습니다.</div>
   <div class="body">
-    <div class="grid" style="grid-template-columns:repeat(5,1fr);height:250px;">
-      <div class="card" style="align-items:center;text-align:center;"><img src="assets/logo_jiq.png" style="height:60px;object-fit:contain;" alt=""><h4 style="font-size:16px;">톡톡스탁 → 지큐㈜</h4><p style="font-size:14px;margin-top:4px;">2016.07 창업 → 2018.07 법인전환<br>투자 서비스 0→1, 마케팅 실행사<br>이벤트성 단기 재택 인력 2,000명</p></div>
+    <div class="grid" style="grid-template-columns:repeat(5,1fr);height:272px;">
+      <div class="card" style="align-items:center;text-align:center;"><img src="assets/logo_jiq.png" style="height:60px;object-fit:contain;" alt=""><h4 style="font-size:16px;"><span class="nw">톡톡스탁&nbsp;→&nbsp;지큐㈜</span></h4><p style="font-size:14px;margin-top:4px;">2016.07 <span class="nw">창업&nbsp;→&nbsp;2018.07</span> 법인전환<br>투자 서비스 0→1, 마케팅 실행사<br>이벤트성 단기 재택 인력 2,000명</p></div>
       <div class="card" style="align-items:center;text-align:center;"><img src="assets/logo_kai.png" style="height:60px;object-fit:contain;" alt=""><h4 style="font-size:16px;">라벨인베스트먼트</h4><p style="font-size:14px;margin-top:4px;">2018.07<br>금융SW ‘알파’(한국AI투자센터)<br><span class="nw">와디즈(크라우드&nbsp;펀딩)</span> 리워드 4억+ 판매</p></div>
       <div class="card" style="align-items:center;text-align:center;"><div style="width:60px;height:60px;border-radius:50%;background:var(--pale);color:var(--blue);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;">더큐</div><h4 style="font-size:16px;">더큐디자인</h4><p style="font-size:14px;margin-top:4px;">2019.07<br>이업종 제휴 기반<br>마케팅 채널 확장</p></div>
       <div class="card" style="align-items:center;text-align:center;"><img src="assets/logo_ese.png" style="height:60px;object-fit:contain;" alt=""><h4 style="font-size:16px;">이에스이 · 2S2</h4><p style="font-size:14px;margin-top:4px;">2020.11<br>온라인 여성패션<br>이커머스 런칭</p></div>
       <div class="card" style="align-items:center;text-align:center;"><img src="assets/logo_chain.png" style="height:60px;object-fit:contain;" alt=""><h4 style="font-size:16px;">체인머신</h4><p style="font-size:14px;margin-top:4px;">2021.05<br>핀테크 신사업 법인 설립<br>투자자문업 등록 추진</p></div>
     </div>
-    <div class="card soft" style="margin-top:18px;padding:26px 30px;">
+    <div class="card soft" style="margin-top:14px;padding:18px 30px;">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;position:relative;">
         <div style="position:absolute;left:7%;right:7%;top:9px;height:2px;background:var(--line);"></div>
         <div style="position:relative;text-align:center;width:24%;"><div style="width:18px;height:18px;border-radius:50%;background:var(--blue);margin:0 auto 8px;"></div><b style="color:var(--ink);font-size:14px;">2016.07</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px;">톡톡스탁 창업</div></div>
         <div style="position:relative;text-align:center;width:24%;"><div style="width:18px;height:18px;border-radius:50%;background:var(--blue);margin:0 auto 8px;"></div><b style="color:var(--ink);font-size:14px;">2018.07</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px;">지큐㈜ 법인전환 · 라벨인베스트먼트 설립</div></div>
-        <div style="position:relative;text-align:center;width:24%;"><div style="width:18px;height:18px;border-radius:50%;background:var(--ink);margin:0 auto 8px;"></div><b style="color:var(--ink);font-size:14px;">2025.09</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px;">그룹 정리<br>사업 환경 변화를 판단해<br>시점·방식을 직접 결정</div></div>
+        <div style="position:relative;text-align:center;width:24%;"><div style="width:18px;height:18px;border-radius:50%;background:var(--ink);margin:0 auto 8px;"></div><b style="color:var(--ink);font-size:14px;">2025.09</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px;">그룹 정리<br>사업 환경 변화를 판단해<br><span class="nw">시점·방식을</span> 직접 결정</div></div>
         <div style="position:relative;text-align:center;width:24%;"><div style="width:18px;height:18px;border-radius:50%;background:var(--ink);margin:0 auto 8px;"></div><b style="color:var(--ink);font-size:14px;">2025.12</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px;">㈜올림포스네트웍스 입사</div></div>
       </div>
     </div>
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>02 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>02 / 10</span></div>
 </section>
 
 <!-- NOW · 올림포스 -->
 <section class="slide fill">
   <div class="top"><div class="tag">Now · ㈜올림포스네트웍스</div></div>
-  <div class="hd">현재 — 대형 보험사 공동사업과 B2B 제휴를<br><em>기획부터 제안서·IR 작성까지</em> 직접 수행합니다</div>
-  <div class="sub">전략사업실 파트장 · 2025.12.24 ~ 현재 · 수치는 2026년 누적 기준</div>
+  <div class="hd">현재 — 대형 보험사 공동사업과 B2B 제휴에서<br><em><span class="nw">제안서·IR을</span> 직접 쓰고</em> 자동화 요구사항을 정의합니다</div>
+  <div class="sub">프로젝트별 TF 리드(전략사업실 파트장) · 보험사 사업은 제안서 실무 작성과 자동화 요구사항 정의가 제 몫</div>
   <div class="body">
     <div class="grid g3" style="height:176px;">
-      <div class="card"><div class="k">SOLUTION · JOINT BUSINESS</div><h4>대형 보험사 공동사업</h4><p>협업 모델을 정의하고 제안서를 <b>작성</b>했으며, 실행 단계까지 맡았습니다.</p></div>
-      <div class="card"><div class="k">SOLUTION · B2B PROPOSAL</div><h4>제휴·납품 제안</h4><p>국내 카드사·보험사·복지몰 플랫폼 등을 대상으로 제안서를 쓰고 미팅으로 추진했습니다.</p></div>
-      <div class="card"><div class="k">SOLUTION · IR &amp; HR</div><h4>투자제안서·IR, 인사 겸임</h4><p>통합 IR을 <b>v12</b>까지 개정했고, 채용·인사 운영을 겸임하고 있습니다.</p></div>
+      <div class="card"><div class="k">ROLE · JOINT BUSINESS</div><h4>대형 보험사 공동사업</h4><p>협업 구조는 <span class="nw">상사·팀이</span> 정했고, 저는 <b>제안서를 실무로 작성</b>하고 자동화 <b>요구사항을 정의</b>했습니다.</p></div>
+      <div class="card"><div class="k">ROLE · B2B PROPOSAL</div><h4><span class="nw">제휴·납품</span> 제안</h4><p>국내 <span class="nw">카드사·보험사·복지몰</span> 플랫폼 등을 대상으로 제안서를 쓰고 미팅으로 추진했습니다.</p></div>
+      <div class="card"><div class="k">ROLE · IR &amp; HR</div><h4><span class="nw">투자제안서·IR,</span> 인사 겸임</h4><p>통합 IR을 <b>v12</b>까지 개정했고, <span class="nw">채용·인사</span> 운영을 겸임하고 있습니다.</p></div>
     </div>
     <div style="margin:26px 0 12px;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue);">ACTIVITY · 2026년 누적 기준</div>
     <div class="grid g4" style="height:176px;">
       <div class="stat" style="padding:18px 26px;"><b style="font-size:54px;">25<i>개</i></b><strong>트랙</strong><span>신사업 14 + 그 외 11 리드</span></div>
-      <div class="stat" style="padding:18px 26px;"><b style="font-size:54px;">54<i>개사</i></b><strong>제안</strong><span>보험사·공제회 15곳 포함</span></div>
+      <div class="stat" style="padding:18px 26px;"><b style="font-size:54px;">54<i>개사</i></b><strong>제안</strong><span><span class="nw">보험사·공제회</span> 15곳 포함</span></div>
       <div class="stat" style="padding:18px 26px;"><b style="font-size:54px;">17<i>회</i></b><strong>외부 미팅</strong><span>대면 14회</span></div>
-      <div class="stat" style="padding:18px 26px;"><b style="font-size:54px;">3<i>종</i></b><strong>IR·투자제안서</strong><span>통합IR·보험사 특화·복구온</span></div>
+      <div class="stat" style="padding:18px 26px;"><b style="font-size:54px;">3<i>종</i></b><strong><span class="nw">IR·투자제안서</span></strong><span><span class="nw">통합IR·보험사</span> <span class="nw">특화·복구온</span></span></div>
     </div>
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>03 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>03 / 10</span></div>
 </section>
 
 <!-- NOW · BUILD & AX -->
 <section class="slide">
   <div class="top"><div class="tag">Now · Build &amp; AX</div></div>
-  <div class="hd">AI로 <em>직접 만들고 자동화</em>하고,<br>AX 도입은 <em>외부 전문가와 연결</em>해 추진합니다</div>
+  <div class="hd"><em>업무 병목을 찾아 요구사항으로 정의</em>하고,<br>AI 도입 방향을 잡는 <em>AX 역할</em>을 맡을 수 있습니다</div>
+  <div class="sub">AX바우처 참여로 외부 전문가 자문을 받았고, 도입은 방향을 검토하는 단계입니다</div>
   <div class="body">
     <div class="grid" style="grid-template-columns:1fr 1.1fr;height:100%;">
       <div class="shotbox">
         <img class="shot c" style="height:128px;" src="assets/parkcare_crop.png" alt="">
-        <div class="cap"><b>파크케어 랜딩</b> — 출장세차를 ‘회당 5,000원·30분 드라이브인’으로 재정의, 요금제 4티어. 기획·카피·화면 구성은 직접, 구현은 AI(바이브 코딩)로 한 1인 제작</div>
+        <div class="cap"><b>파크케어 랜딩</b> — 출장세차를 ‘회당 <span class="nw">5,000원·30분</span> 드라이브인’으로 재정의, 요금제 4티어. <span class="nw">기획·카피·화면</span> 구성은 직접, 구현은 AI(바이브 코딩)로 한 1인 제작</div>
         <img class="shot c" style="height:174px;" src="assets/bokguon_crop.png" alt="">
-        <div class="cap"><b>복구온 랜딩</b> — 화면 전환 플로우·랜딩 설계 (개발은 실가동 중)</div>
+        <div class="cap"><b>복구온 랜딩</b> — 화면 전환 <span class="nw">플로우·랜딩</span> 설계 (개발은 실가동 중)</div>
       </div>
       <div class="stack">
-        <div class="card"><div class="k">DIRECT · 직접 합니다</div>
+        <div class="card"><div class="k">맡은 일 · 자동화와 제작</div>
           <ul>
-            <li>기획서·제안서·IR 문서를 AI로 작성하고, 간트형 주간보고·자동집계를 운영 (개인 성과·목표·프로젝트 관리)</li>
-            <li>대형 보험사 공동사업의 업무 자동화 시스템 구축</li>
-            <li>랜딩·프로토타입 1인 제작 (기획·카피·화면 구성은 직접, 구현은 AI 바이브 코딩)</li>
+            <li><span class="nw">기획서·제안서·IR</span> 문서를 AI로 작성하고, 간트형 <span class="nw">주간보고·자동집계를</span> 운영해 개인 <span class="nw">성과·목표·프로젝트를</span> 관리</li>
+            <li>대형 보험사 공동사업의 업무 자동화 — <b>요구사항 정의</b>, 개발은 <span class="nw">타팀·외부</span> 수행</li>
+            <li><span class="nw">랜딩·프로토타입</span> 1인 제작 <span class="nw">(기획·카피·화면</span> 구성은 직접, 구현은 AI 바이브 코딩)</li>
           </ul></div>
-        <div class="card"><div class="k">CONNECT · 연결합니다</div>
+        <div class="card"><div class="k">AX 역할 · 외부 자문과 도입 검토</div>
           <ul>
-            <li>AX원스톱바우처 신청</li>
-            <li>외부 AX 전문가(국내 클라우드 기업)와의 미팅 주선</li>
-            <li>AI 카운셀러·에이전트 AI 도입 방향 검토</li>
+            <li>회사가 정부지원사업에 참여하던 중 <span class="nw">AX원스톱바우처에</span> 참여해, 외부 전문가<span class="nw">(국내 클라우드 기업)의</span> 기업 자문을 받음</li>
+            <li>자문을 토대로 AI <span class="nw">카운셀러·에이전트</span> AI 도입 방향을 검토 — <b class="nw">병목 발굴과 요구사항 정의</b>가 제 역할</li>
+            <li>다음 목표 — 정부지원 과제를 수주해 회사의 가치를 높이는 일</li>
           </ul></div>
       </div>
     </div>
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>04 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>04 / 10</span></div>
 </section>
 
 <!-- CASE 1 -->
 <section class="slide case">
   <div class="top"><div class="tag">Case 01 · Zero-to-One</div><div class="trk"><span class="on">배경</span><span class="on">문제</span><span class="on">해결</span><span class="on">개선</span></div></div>
   <div class="hd">자본 150만 원으로 시작해<br><em>3개월 만에 월매출 1억</em>을 만들었습니다</div>
-  <div class="sub">톡톡스탁 · 2016.07 · 창업·대표이사 — ‘하루 5분 투자’</div>
+  <div class="sub">톡톡스탁 · 2016.07 · <span class="nw">창업·대표이사</span> — 수익 배분 계약을 직접 체결하고 포지셔닝·계약서·재기획을 결정</div>
   <div class="body">
     <div class="grid g4 c13" style="height:322px;grid-template-columns:.95fr .95fr 1.5fr .9fr;">
       <div class="card"><div class="k">BACKGROUND</div><h4>배경</h4><p>게리온에서 일하며 고객에게 <b>객관적 데이터를 주기 어렵다</b>는 한계를 느꼈습니다. 1999년에 나온 금융감독원 보도자료로 알게 된 시스템트레이딩을 소프트웨어로 풀기로 했습니다.</p></div>
-      <div class="card"><div class="k">PROBLEM</div><h4>문제</h4><ul><li><b>자본 150만 원</b> — 외주 개발비를 낼 수 없음</li><li>경쟁사는 수익률을 외침 — 차별점이 없음</li><li>금융 서비스 — 고지·계약 리스크</li></ul></div>
+      <div class="card"><div class="k">PROBLEM</div><h4>문제</h4><ul><li><b>자본 150만 원</b> — 외주 개발비를 낼 수 없음</li><li>경쟁사는 수익률을 외침 — 차별점이 없음</li><li>금융 서비스 — <span class="nw">고지·계약</span> 리스크</li></ul></div>
       <div class="card"><div class="k">SOLUTION</div><h4>해결</h4><ul><li>기존 고객사 PR로 <b>‘매출 구간별 수익 배분’ 무상 개발 계약</b> — 초기 자본 부담 0</li><li>시간 없는 직장인을 겨냥한 <b>‘하루 5분 투자’</b> 포지셔닝</li><li>‘투자자 본인 책임’ 고지, <b>타사 계약서 10곳 이상</b> 벤치마킹으로 계약서를 구축</li></ul></div>
       <div class="card blue"><div class="k">IMPROVEMENT</div><h4>개선</h4><div class="big">월매출 1억</div><div class="sm"><span class="nw">3개월 만에 달성</span><br><span class="nw">(목표는 6개월)</span><br>6개월 내 고객 <b>1,000명</b></div></div>
     </div>
-    <div class="band" style="margin-top:20px;"><small>CRISIS &amp; PIVOT</small>한때 흐린 컨셉·낮은 판매율·직원 이탈로 폐업 위기까지 갔고, <b style="color:#fff;">‘하루 5분 자동화 투자’</b>로 구매 포인트와 타겟을 다시 잡아 회복했습니다.</div>
+    <div class="band" style="margin-top:20px;"><small>CRISIS &amp; PIVOT</small>한때 흐린 <span class="nw">컨셉·낮은</span> <span class="nw">판매율·직원</span> 이탈로 폐업 위기까지 갔고, <b style="color:#fff;">‘하루 5분 자동화 투자’</b>로 구매 포인트와 타겟을 다시 잡아 회복했습니다.</div>
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>05 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>05 / 10</span></div>
 </section>
 
 <!-- CASE 2 -->
 <section class="slide case">
   <div class="top"><div class="tag">Case 02 · Product &amp; Negotiation</div><div class="trk"><span class="on">배경</span><span class="on">문제</span><span class="on">해결</span><span class="on">개선</span></div></div>
   <div class="hd">개발비 1억+ 요구에 <em>수익 7:3</em>을 역제안해,<br>5개월 만에 개발비를 회수했습니다</div>
-  <div class="sub">금융SW ‘알파’ · 라벨인베스트먼트(한국AI투자센터 KAI 브랜드) · 2018.07~2025.09 · 대표이사</div>
+  <div class="sub">금융SW ‘알파’ · 라벨인베스트먼트(한국AI투자센터) 대표이사 — <span class="nw">협상 구조 설계와 직접 연대보증</span></div>
   <div class="body">
     <div class="grid g4 c13" style="height:322px;grid-template-columns:.95fr .95fr 1.5fr .9fr;">
       <div class="card"><div class="k">BACKGROUND</div><h4>배경</h4><p>라벨인베스트먼트가 시스템트레이딩 솔루션 ‘알파’ 개발에 나섰습니다. 시장에서 <b>완성도 높은 제품은 비어 있다</b>고 판단했고, 이를 개발사 설득의 근거로 삼았습니다.</p></div>
-      <div class="card"><div class="k">PROBLEM</div><h4>문제</h4><ul><li>개발사가 초기 개발비 <b class="nw">1억 원+</b>를 요구, 투자 여력은 없음</li><li>규제 산업의 제품을 재현 가능한 운영까지 설계해야 함</li></ul></div>
-      <div class="card"><div class="k">SOLUTION</div><h4>해결</h4><ul><li>개발사를 직접 방문해 시장 공백과 <b>월 1억 매출 계획</b>을 근거로 제시</li><li>개발비 대신 <b>수익 7:3 배분</b>을 역제안하고, 개발비를 수익으로 충당하는 조건으로 <b>직접 연대보증</b></li><li>제품·연동, 퍼널 5단계·등급제, 운영 표준(SOP)을 <b>1인 설계</b></li></ul></div>
+      <div class="card"><div class="k">PROBLEM</div><h4>문제</h4><ul><li>개발사가 초기 개발비 <b class="nw">1억 원+</b>를 요구, 투자 여력은 없음</li><li><span class="nw">제품·고객</span> <span class="nw">여정·운영을</span> 한 번에 설계해야 함 (다음 장)</li></ul></div>
+      <div class="card"><div class="k">SOLUTION</div><h4>해결</h4><ul><li>개발사를 직접 방문해 시장 공백과 <b>월 1억 매출 계획</b>을 근거로 제시</li><li>개발비 대신 <b>수익 7:3 배분</b>을 역제안하고, 개발비를 수익으로 충당하는 조건으로 <b>직접 연대보증</b></li></ul></div>
       <div class="card blue"><div class="k">IMPROVEMENT</div><h4>개선</h4><div class="big">5개월 만에</div><div class="sm">개발비 전액 회수<br>첫 달 3,000만<br>→ 2개월차 7,000만<br>→ 이후 매달 <b>1억+</b></div></div>
     </div>
     <div class="band" style="margin-top:20px;"><small>TAKEAWAY</small>선지급 대신 수익을 나누고, 그 위험은 직접 연대보증으로 졌습니다.</div>
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>06 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>06 / 10</span></div>
+</section>
+
+<!-- CASE 2B -->
+<section class="slide case c2b">
+  <div class="top"><div class="tag">Case 02 · Product Design</div><div class="trk"><span>배경</span><span>문제</span><span class="on">해결</span><span class="on">개선</span></div></div>
+  <div class="hd">제품정의부터 <em>고객 <span class="nw">여정·운영까지</span></em>,<br>알파를 하나의 시스템으로 1인 설계했습니다</div>
+  <div class="sub" style="top:180px;font-size:14px;line-height:1.45;">금융SW ‘알파’ · 라벨인베스트먼트 대표이사 — 제품 정의·퍼널·등급제·운영 표준은 직접 설계, 화면 구현은 개발사</div>
+  <div class="body tight" style="top:212px;">
+    <div class="grid" style="grid-template-columns:1.12fr 1fr;height:100%;">
+      <div class="grid g2" style="grid-template-rows:1fr 1fr;">
+        <div class="card"><div class="k">PRODUCT</div><h4><span class="nw">제품·연동</span> 정의</h4><p>국내 증권사 복수의 OpenAPI(HTS) 연동을 전제로 <span class="nw">PC·모바일</span> 멀티플랫폼 제품을 정의했습니다. 단일 화면이 아닌 외부 연동 구조입니다.</p></div>
+        <div class="card"><div class="k">JOURNEY</div><h4>고객 <span class="nw">여정·과금</span></h4><p>7일 무료체험에서 등급제 전환까지 <b>퍼널 5단계</b>를 직접 설계했고, 과금은 <span class="nw">GOLD·PLATINUM·DIAMOND</span> 등급제입니다.</p></div>
+        <div class="card"><div class="k">OPERATION</div><h4>운영 표준화</h4><p>셋팅 <span class="nw">절차·영업</span> <span class="nw">스크립트·KPI를</span> 표준화해 사람이 바뀌어도 같은 품질이 나오게 했습니다.</p></div>
+        <div class="card"><div class="k">COMPLIANCE</div><h4>컴플라이언스 내장</h4><p>종목선별 자동화는 의도적으로 배제하고 투자 판단은 고객에게 귀속시켰습니다. 규제 대응은 Case 04에 이어집니다.</p></div>
+      </div>
+      <div class="shotbox">
+        <img class="shot c" style="height:206px;object-position:left top;" src="assets/alpha_screen_demo.png" alt="">
+        <div class="cap"><b>알파 화면</b> — 개발사 구현(데모 데이터). 제품 정의·설계는 1인 작업</div>
+        <div class="flow" style="gap:6px;">
+          <div class="st1" style="padding:10px 9px;font-size:12.5px;background:var(--bg);box-shadow:none;"><b style="font-size:13.5px;">증권사 연동</b><span class="nw">OpenAPI·HTS</span></div><div class="ar" style="font-size:15px;">→</div>
+          <div class="st1" style="padding:10px 9px;font-size:12.5px;background:var(--bg);box-shadow:none;"><b style="font-size:13.5px;">알파</b>전략 <span class="nw">설정·실행</span></div><div class="ar" style="font-size:15px;">→</div>
+          <div class="st1" style="padding:10px 9px;font-size:12.5px;background:var(--bg);box-shadow:none;"><b style="font-size:13.5px;">클라이언트</b><span class="nw">PC·모바일</span></div><div class="ar" style="font-size:15px;">→</div>
+          <div class="st1" style="padding:10px 9px;font-size:12.5px;background:var(--bg);box-shadow:none;"><b style="font-size:13.5px;">고객</b>직접 <span class="nw">판단·실행</span></div>
+        </div>
+        <div class="cap"><b>제품 구조</b> — 증권사 연동부터 고객 실행까지 하나의 흐름</div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>07 / 10</span></div>
 </section>
 
 <!-- CASE 3 -->
 <section class="slide case">
   <div class="top"><div class="tag">Case 03 · Scale-up &amp; Organization</div><div class="trk"><span class="on">배경</span><span class="on">문제</span><span class="on">해결</span><span class="on">개선</span></div></div>
-  <div class="hd">수원 1호점은 <em>3개월 걸리는 설립을 2주</em>에 끝냈고,<br>그 과정을 매뉴얼로 만들어 8곳으로 늘렸습니다</div>
-  <div class="sub">전국 8개 센터 확장 · 라벨인베스트먼트 · 대표이사</div>
+  <div class="hd">수원 1호점 설립을 <em>통상 3개월에서 2주</em>로 줄이고,<br>그 과정을 매뉴얼로 만들어 8곳으로 늘렸습니다</div>
+  <div class="sub">라벨인베스트먼트 대표이사 — ‘지역 거점화’ 전략 결정 · 센터장 발탁과 자율 경영권 위임 · KPI 설계</div>
   <div class="body">
     <div class="grid g4 c13" style="height:322px;grid-template-columns:.85fr .75fr 1.9fr 1.2fr;">
-      <div class="card"><div class="k">BACKGROUND</div><h4>배경</h4><p>알파 영업은 강남 본사 <span class="nw">한 곳의</span> 인력으로 움직였습니다. <b>채용과 안정화(이직률)에 한계</b>가 있다고 판단했습니다.</p></div>
+      <div class="card"><div class="k">BACKGROUND</div><h4>배경</h4><p>알파 영업은 강남 본사 <span class="nw">한 곳의</span> 인력으로 움직였습니다. <b>채용과 안정화(이직률)에 한계</b>가 있다고 판단해 <b>‘지역 거점화’</b>로 풀기로 했습니다.</p></div>
       <div class="card"><div class="k">PROBLEM</div><h4>문제</h4><ul><li>센터 하나를 세우는 데 통상 <b>3개월</b></li><li>센터가 늘어도 <b>같은 품질</b>로 움직여야 함</li></ul></div>
-      <div class="card"><div class="k">SOLUTION</div><h4>해결</h4><ul><li><b>수원 1호점</b> — 상권·입지·인테리어·집기·인원 배치를 병렬로 겹쳐 <b>2주</b> 설립 (본사 전액 지원)</li><li>검증된 조직장을 센터장으로 발탁해 지역 네트워크로 채용 — 수원은 전국 1등</li><li>과정을 <b>매뉴얼</b>로 만들어 8곳(역삼·강남구청·가산·수원·대전·부산·광주·언주)에 복제</li><li>자율 경영 + <b>성과 보상</b>, CVR 핵심 KPI, 우수 센터에 상담 DB 추가 배분</li></ul></div>
+      <div class="card"><div class="k">SOLUTION</div><h4>해결</h4><ul><li><b>수원 1호점</b> — <span class="nw">상권·입지·인테리어·집기·인원</span> 배치를 병렬로 겹쳐 <b>2주</b> 설립 (본사 전액 지원)</li><li>검증된 조직장을 센터장으로 발탁해 지역 네트워크로 채용 — 수원은 전국 1등</li><li>과정을 <b>매뉴얼</b>로 만들어 8곳(역삼·강남구청·<span class="nw">가산·수원·대전·부산·광주·언주)에</span> 복제</li><li>센터장에게 <b>자율 경영권 위임</b> + 성과 보상, CVR 핵심 KPI, 우수 센터에 상담 DB 추가 배분</li></ul></div>
       <div class="card blue"><div class="k">IMPROVEMENT</div><h4>개선</h4><div class="big">8곳</div><div class="sm">설립 · 조직 100명<br><b>지큐그룹 합산</b> — 누적 매출 100억,<br><span class="nw">연 매출 556% 성장</span> (2019→2020, 내부 추정)</div></div>
     </div>
-    <div class="amber" style="margin-top:20px;"><b>배움 — 광주 폐쇄.</b> 검증이 덜 된 상대에게 운영권과 시설 투자를 맡기고 내부 우려를 충분히 검증하지 않았습니다. 설립 8곳 중 광주는 폐쇄돼 7곳이 운영됐고, 이후 투자·제휴 전에는 가정을 검증하고 반대 의견을 먼저 듣는 원칙을 세웠습니다.</div>
+    <div class="amber" style="margin-top:20px;"><b>배움 — 광주 폐쇄.</b> 검증이 덜 된 상대에게 운영권과 시설 투자를 맡기고 내부 우려를 충분히 검증하지 않았습니다. 설립 8곳 중 광주는 폐쇄돼 7곳이 운영됐고, 이후 <span class="nw">투자·제휴</span> 전에는 가정을 검증하고 반대 의견을 먼저 듣는 원칙을 세웠습니다.</div>
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>07 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>08 / 10</span></div>
 </section>
 
 <!-- CASE 5 -->
 <section class="slide case">
   <div class="top"><div class="tag">Case 04 · Risk &amp; Resolution</div><div class="trk"><span class="on">배경</span><span class="on">문제</span><span class="on">해결</span><span class="on">개선</span></div></div>
   <div class="hd">시스템트레이딩의 <em>법적 성격을 소명</em>해 혐의없음 처분을 받고,<br>핵심 인력 이탈은 없었습니다</div>
-  <div class="sub">규제 대응 · 위기 커뮤니케이션 · 라벨인베스트먼트 대표이사</div>
+  <div class="sub">규제 대응 · 라벨인베스트먼트 대표이사 — 조사 소명 · 전 직원 집체교육 소집 · 종목선별 자동화 불가 판단</div>
   <div class="body">
     <div class="grid g4 c13" style="height:364px;grid-template-columns:.95fr .95fr 1.5fr .9fr;">
       <div class="card"><div class="k">BACKGROUND</div><h4>배경</h4><p><b>시스템트레이딩</b>은 고객이 종목을 선택하고, <b>카피트레이딩</b>은 회사가 종목을 선택합니다. 이 차이가 쟁점이었습니다.</p></div>
       <div class="card"><div class="k">PROBLEM</div><h4>문제</h4><ul><li>시스템트레이딩을 불법 카피트레이딩으로 오인한 고객의 <b>금융감독원 민원</b></li><li>언론 보도</li><li>보도 국면의 100명 조직 관리</li></ul></div>
-      <div class="card"><div class="k">SOLUTION</div><h4>해결</h4><ul><li>금융감독원 민원에서 이어진 조사에서 두 방식의 차이로 <b>법적 성격을 소명</b></li><li>전 직원 100명을 소집해 <b>2박 3일 집체교육</b>, 처분 통지서를 공개해 상황 설명</li><li>기획 때 나온 종목선별 자동화 요구는 법률 검토를 근거로 <b class="nw">불가 처리</b>, 민원·환불 기준 표준화</li></ul></div>
+      <div class="card"><div class="k">SOLUTION</div><h4>해결</h4><ul><li>금융감독원 민원에서 이어진 조사에서 두 방식의 차이로 <b>법적 성격을 소명</b></li><li>전 직원 100명을 소집해 <b>2박 3일 집체교육</b>, 처분 통지서를 공개해 상황 설명</li><li>기획 때 나온 종목선별 자동화 요구는 법률 검토를 근거로 <b class="nw">불가 판단</b>, <span class="nw">민원·환불</span> 기준 표준화</li></ul></div>
       <div class="card blue"><div class="k">IMPROVEMENT</div><h4>개선</h4><div class="big" style="font-size:34px;">혐의없음 처분</div><div class="sm">100명 조직 안정 운영<br><b>핵심 인력 이탈 없음</b></div></div>
     </div>
     
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>08 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>09 / 10</span></div>
 </section>
 
 <!-- CAREER INDEX · CONTACT -->
@@ -324,21 +357,21 @@ img.shot.ct{ object-fit:contain; background:#0F1626; }
     <div class="card" style="padding:12px 26px;">
       <table style="width:100%;border-collapse:collapse;font-size:15px;">
         <tr style="color:var(--muted);font-size:12px;"><td style="padding:4px 0;width:172px;white-space:nowrap;">기간</td><td style="width:230px;">소속</td><td>역할 · 내용</td></tr>
-        <tr style=""><td style="padding:12px 0;color:var(--muted);">2025.12 ~ 현재</td><td style="font-weight:800;color:var(--ink);padding:12px 0;">㈜올림포스네트웍스</td><td>전략사업실 파트장 — 신사업·B2B 제휴·플랫폼·IR·인사</td></tr>
-        <tr style="border-top:1px solid var(--line);"><td style="padding:12px 0;color:var(--muted);">2016.07 ~ 2025.09</td><td style="font-weight:800;color:var(--ink);padding:12px 0;">지큐그룹<br><span style="font-weight:500;font-size:12px;color:var(--muted);">톡톡스탁→지큐㈜→라벨 등</span></td><td>창업 · 대표이사 — 0→1 런칭·스케일업·조직화 9년 2개월 (Case 01~04)</td></tr>
+        <tr style=""><td style="padding:12px 0;color:var(--muted);">2025.12 ~ 현재</td><td style="font-weight:800;color:var(--ink);padding:12px 0;">㈜올림포스네트웍스</td><td>파트장(프로젝트별 TF 리드) — 보험사 공동사업 제안서 작성 · B2B 제휴 제안 · 플랫폼 화면 설계 · IR 제작</td></tr>
+        <tr style="border-top:1px solid var(--line);"><td style="padding:12px 0;color:var(--muted);">2016.07 ~ 2025.09</td><td style="font-weight:800;color:var(--ink);padding:12px 0;">지큐그룹<br><span style="font-weight:500;font-size:12px;color:var(--muted);">톡톡스탁→지큐㈜→라벨 등</span></td><td>창업 · 대표이사 — 다섯 개 사업을 직접 런칭하고 조직·손익을 책임 (Case 01~04)</td></tr>
         <tr style="border-top:1px solid var(--line);"><td style="padding:12px 0;color:var(--muted);">2015.09 ~ 2016.06</td><td style="font-weight:800;color:var(--ink);padding:12px 0;">게리온</td><td>증권연구부 팀장 — 개인 매출 1억 · 회사 매출 567% 성장 기여</td></tr>
         <tr><td colspan="3" style="font-size:12px;font-weight:700;color:var(--blue);padding:8px 0 2px;border-top:1px solid var(--line);">프로젝트 · 협업 경력</td></tr>
-        <tr><td style="padding:8px 0;color:var(--muted);white-space:nowrap;">2024.10 ~ 12</td><td style="font-weight:800;color:var(--ink);">멸치</td><td>신사업기획 사업 리드 — 펫 신사업 기획·오프라인 매장 테스트</td></tr>
-        <tr><td style="padding:8px 0;color:var(--muted);white-space:nowrap;">2023.12 ~ 2024.02</td><td style="font-weight:800;color:var(--ink);">마케티어</td><td>홍보실 파트장 — 카카오 톡스토어 컨설팅·소상공인 B2B 마케팅</td></tr>
-        <tr><td style="padding:8px 0;color:var(--muted);white-space:nowrap;">2023.02 ~ 11</td><td style="font-weight:800;color:var(--ink);">블루바이저시스템즈</td><td>AI 사업개발 리드 — 3개월 만에 월 신규가입 목표(100건) 대비 1,000% 달성(월 1,000건)</td></tr>
+        <tr><td style="padding:8px 0;color:var(--muted);white-space:nowrap;">2024.10 ~ 12</td><td style="font-weight:800;color:var(--ink);">멸치</td><td>신사업기획 사업 리드 — 펫 신사업 사업모델 기획, <span class="nw">오프라인 매장 테스트</span> 운영</td></tr>
+        <tr><td style="padding:8px 0;color:var(--muted);white-space:nowrap;">2023.12 ~ 2024.02</td><td style="font-weight:800;color:var(--ink);">마케티어</td><td>홍보실 파트장 — 카카오 톡스토어 <span class="nw">컨설팅·소상공인</span> B2B 마케팅</td></tr>
+        <tr><td style="padding:8px 0;color:var(--muted);white-space:nowrap;">2023.02 ~ 11</td><td style="font-weight:800;color:var(--ink);">블루바이저시스템즈</td><td>AI 사업개발 리드 — B2C 메시지·B2B 2차 영업 설계, 월 신규가입 목표(100건) 대비 1,000% 달성(월 1,000건)</td></tr>
       </table>
     </div>
     <div class="grid g2" style="margin-top:12px;height:84px;">
-      <div class="card soft" style="padding:12px 22px;justify-content:center;"><p style="margin:0;font-size:13.5px;"><b>학력</b> 용인대학교 경영학과 중퇴 · 학점 4.3/4.5 &nbsp;|&nbsp; <b>자격 · 이력</b> 손해보험·제3보험 시험 합격(2026.10) · 투자자문업 등록 추진 경험(체인머신) · 파생상품거래 수료</p></div>
+      <div class="card soft" style="padding:12px 22px;justify-content:center;"><p style="margin:0;font-size:13.5px;"><b>학력</b> 용인대학교 경영학과 중퇴 · 학점 4.3/4.5 &nbsp;|&nbsp; <b>자격 · 이력</b> <span class="nw">손해보험·제3보험</span> 시험 합격(2026.10) · 투자자문업 등록 추진 경험(체인머신) · 파생상품거래 수료</p></div>
       <div class="card soft" style="padding:12px 22px;justify-content:center;"><p style="margin:0 0 5px;font-size:13.5px;font-weight:700;color:var(--ink);">AX로 자동화를 이루고, 자동화로 업무의 낭비를 줄이고, 효율을 높이는 일을 하겠습니다.</p><p style="margin:0;font-size:12.5px;"><b>CONTACT</b> &nbsp;유경탁 · tak2154@naver.com · 010-4694-5203 · 서울 강남구</p></div>
     </div>
   </div>
-  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>09 / 9</span></div>
+  <div class="ft"><span>유경탁 — Portfolio 2026 · 사업기획 · AX</span><span>10 / 10</span></div>
 </section>
 
 <script>
